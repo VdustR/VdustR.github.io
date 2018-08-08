@@ -7,6 +7,14 @@
     "url": "https://VdustR.github.io"
   },
   "license": "MIT",
+  "homepage": "https://github.com/VdustR/VdustR.github.io",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:VdustR/VdustR.github.io.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VdustR/VdustR.github.io/issues"
+  },
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

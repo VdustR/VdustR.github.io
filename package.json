@@ -9,7 +9,7 @@
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "lint": "eslint --ext .js,.vue src",
-    "gh": "yarn build ; gh-pages -d dist"
+    "gh": "yarn build ; gh-pages -d dist -b master"
   },
   "dependencies": {
     "vue": "^2.3.3",

@@ -2,7 +2,7 @@
   "name": "test",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "vipro <vipro.maxwin@gmail.com>",
+  "author": "vipro <VdustR@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",

@@ -1,3 +1,3 @@
-# VdustR.github.io
+# ViPro's Note
 
-My github page: https://VdustR.github.io
+Check it out 👉 https://VdustR.github.io

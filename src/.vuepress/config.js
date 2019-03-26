@@ -33,6 +33,7 @@ module.exports = {
     '@vuepress/medium-zoom': {},
     '@vuepress/nprogress': {},
     '@vuepress/pwa': {
+      popupComponent: 'MySWUpdatePopup',
       serviceWorker: true,
       updatePopup: {
         message: 'New content is available.',

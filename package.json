@@ -24,6 +24,7 @@
     "commit": "git-cz"
   },
   "dependencies": {
+    "date-fns": "^2.0.0-alpha.27",
     "prism-theme-night-owl": "^1.0.1",
     "simple-icons": "^1.9.23"
   },

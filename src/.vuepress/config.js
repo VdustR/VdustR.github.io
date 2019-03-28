@@ -12,7 +12,7 @@ module.exports = {
     ],
     sidebar: [
       {
-        title: '好用工具',
+        title: 'Tools',
         children: [
           'tools/fish',
           'tools/hyper',

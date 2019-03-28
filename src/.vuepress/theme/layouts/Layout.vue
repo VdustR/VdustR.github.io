@@ -122,3 +122,4 @@ export default {
 
 <style src="prism-theme-night-owl"></style>
 <style src="../styles/theme.styl" lang="stylus"></style>
+<style src="../styles/theme.scss" lang="scss"></style>

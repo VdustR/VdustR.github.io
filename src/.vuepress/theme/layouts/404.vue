@@ -26,3 +26,4 @@ export default {
 </script>
 
 <style src="../styles/theme.styl" lang="stylus"></style>
+<style src="../styles/theme.scss" lang="scss"></style>

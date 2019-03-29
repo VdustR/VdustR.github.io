@@ -115,10 +115,10 @@ or Wget:
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ```
 
-Then install [fish-nvm](https://github.com/jorgebucaran/fish-nvm):
+Then install [fish-nvm](https://github.com/FabioAntunes/fish-nvm):
 
 ```bash
-fisher add jorgebucaran/fish-nvm
+fisher add FabioAntunes/fish-nvm edc/bass
 ```
 
 ## Integrate with Docker

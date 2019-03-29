@@ -152,3 +152,10 @@ module.exports = {
   shell: '/usr/local/bin/fish',
 };
 ```
+
+## Windows alternative
+
+[Cmder](https://cmder.net/) is a software package created out of pure frustration over the absence of nice console emulators on Windows. It is based on amazing software, and spiced up with the Monokai color scheme and a custom prompt layout, looking sexy from the start.
+
+🔗[Seamless VS Code Integration](https://github.com/cmderdev/cmder/wiki/Seamless-VS-Code-Integration)  
+🔗[Seamless Hyper integration](https://github.com/cmderdev/cmder/wiki/Seamless-Hyper-integration)

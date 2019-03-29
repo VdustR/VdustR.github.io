@@ -129,7 +129,7 @@ Migrate with [docker(_archived_)](https://github.com/barnybug-archive/docker-fis
 fisher add barnybug/docker-fish-completion
 ```
 
-Migrate with [docker-compsoe](https://github.com/brgmnn/fish-docker-compose):
+Migrate with [docker-compose](https://github.com/brgmnn/fish-docker-compose):
 
 ```bash
 fisher add  brgmnn/fish-docker-compose

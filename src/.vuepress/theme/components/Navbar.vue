@@ -42,7 +42,7 @@
 
 <script>
 import AlgoliaSearchBox from '@AlgoliaSearchBox';
-import SearchBox from '@SearchBox';
+import SearchBox from './SearchBox';
 import SidebarButton from '@theme/components/SidebarButton.vue';
 import NavLinks from '@theme/components/NavLinks.vue';
 

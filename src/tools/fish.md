@@ -121,6 +121,20 @@ Then install [fish-nvm](https://github.com/FabioAntunes/fish-nvm):
 fisher add FabioAntunes/fish-nvm edc/bass
 ```
 
+If node is not loaded at start, create a init script:
+
+```bash
+vi ~/.config/fish/conf.d/nvm.fish
+```
+
+and enter:
+
+```bash
+nvm install node
+```
+
+then try another session.
+
 ## Integrate with Docker
 
 Migrate with [docker(_archived_)](https://github.com/barnybug-archive/docker-fish-completion):

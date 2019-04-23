@@ -77,6 +77,12 @@ fisher ls "^gitlab|fish-.*"
 Update packages:
 
 ```bash
+fisher
+```
+
+Update fisher:
+
+```bash
 fisher self-update
 ```
 

@@ -1,22 +1,14 @@
 {
+  "editor.autoIndent": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "eslint.autoFixOnSave": false,
   "eslint.enable": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "autoFix": false,
-      "language": "vue"
-    }
-  ],
+  "eslint.validate": ["javascript", "vue"],
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
-  "path-intellisense.mappings": {
-    "@": "${workspaceRoot}/src"
-  },
   "prettier.disableLanguages": [],
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.html": "none",

@@ -72,6 +72,6 @@
       "prettier --write",
       "git add"
     ],
-    "*.{js,jsx,ts,tsx,vue}": "eslint"
+    "*.{js,vue}": "eslint"
   }
 }

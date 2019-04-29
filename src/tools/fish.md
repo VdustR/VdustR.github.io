@@ -105,6 +105,31 @@ Uninstall fisher:
 fisher self-uninstall
 ```
 
+### Fixing Perl Warning: Setting locale failed on Mac OS
+
+You might see this while you execute `fisher`:
+
+```sh
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LC_ALL = (unset),
+        LANG = "en_TW.UTF-8"
+    are supported and installed on your system.
+```
+
+Edit fish config:
+
+```sh
+vi ~/.config/fish/config.fish
+```
+
+Add locale environment variables:
+
+```diff
++ export LC_CTYPE=en_US.UTF-8
++ export LC_ALL=en_US.UTF-8
+```
+
 ## Integrate with nvm
 
 [Node Version Manager](https://github.com/creationix/nvm) - Simple **bash** script to manage multiple active node.js versions

@@ -1,0 +1,40 @@
+@require 'code'
+@require '~@/.vuepress/assets/dank-mono.css'
+@require '~prism-theme-night-owl/style.css'
+
+html, body
+  background-color $codeBgColor
+
+body
+  font-family dm, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+.navbar
+  background-color $codeBgColor
+
+.sidebar
+  background-color $codeBgColor
+
+.content:not(.custom)
+  p.demo
+    border 1px solid $borderColor
+
+kbd
+  background $codeBgColor
+  border solid 0.15rem $borderColor
+  border-bottom solid 0.25rem $borderColor
+
+blockquote
+  color #637777
+  border-left .5rem solid #637777
+
+code, kbd, .line-number
+  font-family dm, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+
+tr
+  border-top 1px solid $borderColor
+  &:nth-child(2n)
+    background-color #0e293f
+
+th, td
+  border 1px solid $borderColor
+  padding .6em 1em

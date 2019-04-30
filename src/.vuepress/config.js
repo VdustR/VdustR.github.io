@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   title: `ViPro's Note`,
   description: 'Fancy design. Simple life.',
@@ -43,6 +45,13 @@ module.exports = {
   },
   markdown: {
     lineNumbers: true,
+  },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../'),
+      },
+    },
   },
   evergreen: true,
 };

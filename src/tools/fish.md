@@ -130,6 +130,8 @@ Add locale environment variables:
 + export LC_ALL=en_US.UTF-8
 ```
 
+Reference: [Fixing Perl Warning: Setting locale failed on Mac OS X Mavericks](https://blogs.agilefaqs.com/2014/01/12/fixing-perl-warning-setting-locale-failed-on-mac-osx/)
+
 ## Integrate with nvm
 
 [Node Version Manager](https://github.com/creationix/nvm) - Simple **bash** script to manage multiple active node.js versions
@@ -191,6 +193,8 @@ Edit [settings.json](https://code.visualstudio.com/docs/getstarted/settings#_set
 ```
 
 ## Integrate with [Hyper.js](/tools/hyper)
+
+Edit `~/.hyper.js`:
 
 ```js
 module.exports = {

@@ -1,8 +1,8 @@
 <template>
   <router-link
+    v-if="!isExternal(link)"
     class="nav-link"
     :to="link"
-    v-if="!isExternal(link)"
     :exact="exact"
     >{{ item.text }}</router-link
   >
@@ -32,6 +32,13 @@ import {
 } from '@vuepress/theme-default/util';
 
 export default {
+  props: {
+    item: {
+      type: Object,
+      required: true,
+    },
+  },
+
   data() {
     return {
       iconMap: {
@@ -41,12 +48,6 @@ export default {
         GMail: require('simple-icons/icons/gmail.svg'),
       },
     };
-  },
-
-  props: {
-    item: {
-      required: true,
-    },
   },
 
   computed: {

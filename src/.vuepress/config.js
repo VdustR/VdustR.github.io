@@ -27,10 +27,7 @@ module.exports = {
   plugins: {
     '@vuepress/back-to-top': {},
     '@vuepress/last-updated': {
-      transformer: (timestamp, lang) => {
-        const format = require('date-fns/format');
-        return format(timestamp, 'yyyy/MM/dd HH:mm:ss');
-      },
+      transformer: timestamp => timestamp,
     },
     '@vuepress/medium-zoom': {},
     '@vuepress/nprogress': {},

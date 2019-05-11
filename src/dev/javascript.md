@@ -2,7 +2,7 @@
 
 ## Coding Style
 
-Use [Prettier](https://prettier.io/) as a formatter and use [ESLint](https://eslint.org/) as a inspector(with [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier)).
+Use [Prettier](https://prettier.io/) as a formatter and use [ESLint](https://eslint.org/) as an inspector(with [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier)).
 
 ## Equality
 

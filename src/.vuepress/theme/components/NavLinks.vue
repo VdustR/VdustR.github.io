@@ -1,7 +1,7 @@
 <template>
-  <nav class="nav-links" v-if="userLinks.length || repoLink">
+  <nav v-if="userLinks.length || repoLink" class="nav-links">
     <!-- user links -->
-    <div class="nav-item" v-for="item in userLinks" :key="item.link">
+    <div v-for="item in userLinks" :key="item.link" class="nav-item">
       <DropdownLink v-if="item.type === 'links'" :item="item" />
       <NavLink v-else :item="item" />
     </div>
@@ -78,6 +78,7 @@ export default {
       if (repo) {
         return /^https?:/.test(repo) ? repo : `https://github.com/${repo}`;
       }
+      return undefined;
     },
 
     repoLabel() {

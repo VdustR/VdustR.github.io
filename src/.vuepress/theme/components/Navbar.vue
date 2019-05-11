@@ -4,15 +4,15 @@
 
     <router-link :to="$localePath" class="home-link">
       <img
-        class="logo"
         v-if="$site.themeConfig.logo"
+        class="logo"
         :src="$withBase($site.themeConfig.logo)"
         :alt="$siteTitle"
       />
       <span
+        v-if="$siteTitle"
         ref="siteName"
         class="site-name"
-        v-if="$siteTitle"
         :class="{ 'can-hide': $site.themeConfig.logo }"
         >{{ $siteTitle }}</span
       >
@@ -55,6 +55,18 @@ export default {
     };
   },
 
+  computed: {
+    algolia() {
+      return (
+        this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
+      );
+    },
+
+    isAlgoliaSearch() {
+      return this.algolia && this.algolia.apiKey && this.algolia.indexName;
+    },
+  },
+
   mounted() {
     const MOBILE_DESKTOP_BREAKPOINT = 719; // refer to config.styl
     const NAVBAR_VERTICAL_PADDING =
@@ -72,18 +84,6 @@ export default {
     };
     handleLinksWrapWidth();
     window.addEventListener('resize', handleLinksWrapWidth, false);
-  },
-
-  computed: {
-    algolia() {
-      return (
-        this.$themeLocaleConfig.algolia || this.$site.themeConfig.algolia || {}
-      );
-    },
-
-    isAlgoliaSearch() {
-      return this.algolia && this.algolia.apiKey && this.algolia.indexName;
-    },
   },
 };
 

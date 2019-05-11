@@ -1,8 +1,8 @@
 <template>
   <SWUpdatePopup>
     <div
-      slot-scope="{ enabled, reload, message, buttonText }"
       v-if="enabled"
+      slot-scope="{ enabled, reload, message, buttonText }"
       class="my-sw-update-popup"
     >
       {{ message }}<br />

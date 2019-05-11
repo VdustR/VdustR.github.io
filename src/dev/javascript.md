@@ -85,5 +85,4 @@ console.log(regex2.test(str1));
 // expected output: false
 ```
 
-🔗 reference: [RegExp.prototype​.test()
-Languages Edit Advanced](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
+🔗 reference: [RegExp.prototype​.test()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)

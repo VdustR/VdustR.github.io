@@ -14,6 +14,10 @@ module.exports = {
     ],
     sidebar: [
       {
+        title: 'Dev',
+        children: ['dev/common', 'dev/javascript'],
+      },
+      {
         title: 'Tools',
         children: [
           'tools/fish',
@@ -27,7 +31,7 @@ module.exports = {
   plugins: {
     '@vuepress/back-to-top': {},
     '@vuepress/last-updated': {
-      transformer: timestamp => timestamp,
+      transformer: timestamp => timestamp || new Date(),
     },
     '@vuepress/medium-zoom': {},
     '@vuepress/nprogress': {},

@@ -58,7 +58,10 @@ export default {
 
   computed: {
     lastUpdated() {
-      return format(this.$page.lastUpdated, 'yyyy/MM/dd HH:mm:ss');
+      return (
+        this.$page.lastUpdated &&
+        format(this.$page.lastUpdated, 'yyyy/MM/dd HH:mm:ss')
+      );
     },
 
     lastUpdatedText() {

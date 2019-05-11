@@ -9,6 +9,9 @@
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src"
+  },
   "prettier.disableLanguages": [],
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.html": "none",

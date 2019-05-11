@@ -45,7 +45,6 @@ export default {
         CodePen: require('simple-icons/icons/codepen.svg'),
         Facebook: require('simple-icons/icons/facebook.svg'),
         GitHub: require('simple-icons/icons/github.svg'),
-        GMail: require('simple-icons/icons/gmail.svg'),
       },
     };
   },

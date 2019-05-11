@@ -10,7 +10,6 @@ module.exports = {
       { text: 'CodePen', link: 'https://codepen.io/VdustR' },
       { text: 'Facebook', link: 'https://www.facebook.com/VdustR' },
       { text: 'GitHub', link: 'https://github.com/VdustR' },
-      { text: 'GMail', link: 'mailto:VdustR@gmail.com' },
     ],
     sidebar: [
       {

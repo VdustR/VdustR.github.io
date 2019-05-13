@@ -20,6 +20,10 @@
 
 [🔗 Floating Point Math (0.30000000000000004.com)](https://0.30000000000000004.com/)
 
+## License
+
+[🔗 Choose a License](https://choosealicense.com/)
+
 ## SaaS
 
 Software as a Service

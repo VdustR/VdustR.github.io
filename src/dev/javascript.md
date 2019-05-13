@@ -86,3 +86,22 @@ console.log(regex2.test(str1));
 ```
 
 🔗 reference: [RegExp.prototype​.test()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
+
+## Whitespace: `encodeURIComponent` vs `URLSearchParams`
+
+- `encodeURIComponent` / `encodeURI` encode **whitespace** into `%20`
+- `URLSearchParams` encode _space_ into `+`.
+
+```js
+{
+  console.log(new URLSearchParams('q=foo bar').toString()); // q=foo+bar
+  console.log(encodeURI('q=foo bar')); // q=foo%20bar
+}
+```
+
+Server should decode both back to **whitespace**.
+
+Solution:
+
+- [query-string](https://github.com/sindresorhus/query-string)
+- [decode-uri-component](https://github.com/SamVerschueren/decode-uri-component)

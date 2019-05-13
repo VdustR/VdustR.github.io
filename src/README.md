@@ -14,9 +14,9 @@ This site.
 
 Material Design for Vue.js.
 
-[🔗 Official Site](https://vuematerial.io/)
-[🔗 GitHub](https://github.com/vuematerial/vue-material)
-[🔗 npm](https://www.npmjs.com/package/vue-material)
+- [🔗 Official Site](https://vuematerial.io/)
+- [🔗 GitHub](https://github.com/vuematerial/vue-material)
+- [🔗 npm](https://www.npmjs.com/package/vue-material)
 
 ## Boilerplates
 

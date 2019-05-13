@@ -19,7 +19,9 @@ Solutions:
 - [decimal.js](https://github.com/MikeMcl/decimal.js)![decimal.js](https://img.shields.io/github/stars/MikeMcl/decimal.js.svg)![decimal.js](https://img.shields.io/github/license/MikeMcl/decimal.js.svg)
 
 > **big.js**: minimalist; easy-to-use; precision specified in decimal places; precision applied to division only.
+>
 > **bignumber.js**: bases 2-64; configuration options; `NaN`; `Infinity`; precision specified in decimal places; precision applied to division only; base prefixes.
+>
 > **decimal.js**: bases 2-64; configuration options; `NaN`; `Infinity`; non-integer powers, `exp`, `ln`, `log`; precision specified in significant digits; precision always applied; random numbers.
 
 🔗 reference: [big.js vs. bignumber.js vs. decimal.js? #45](https://github.com/MikeMcl/big.js/issues/45#issuecomment-104211175)

@@ -92,7 +92,7 @@ console.log(regex2.test(str1));
 ## Whitespace: `encodeURIComponent` vs `URLSearchParams`
 
 - `encodeURIComponent` / `encodeURI` encode **whitespace** into `%20`
-- `URLSearchParams` encode _space_ into `+`.
+- `URLSearchParams` encode **whitespace** into `+`.
 
 ```js
 {

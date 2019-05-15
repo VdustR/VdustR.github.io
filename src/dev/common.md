@@ -24,6 +24,22 @@
 
 [🔗 Choose a License](https://choosealicense.com/)
 
+## Replacement Character �
+
+`U+FFFD � REPLACEMENT CHARACTER` used to replace an unknown, unrecognized or unrepresentable character.
+
+Reproduction <Badge text="node@12.2.0" />:
+
+```js
+// node
+new Buffer.from(
+  new Buffer.from([...new Buffer.from('😄')].slice(1)).toString()
+);
+// <Buffer ef bf bd ef bf bd ef bf bd>
+```
+
+[🔗 Specials (Unicode block) | Wikipedia](<https://en.wikipedia.org/wiki/Specials_(Unicode_block)>)
+
 ## SaaS
 
 Software as a Service

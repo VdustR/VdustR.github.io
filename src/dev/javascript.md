@@ -4,6 +4,48 @@
 
 Use [Prettier](https://prettier.io/) as a formatter and use [ESLint](https://eslint.org/) as an inspector(with [`eslint-config-prettier`](https://github.com/prettier/eslint-config-prettier)).
 
+## Date
+
+### Date format
+
+Use `-` for UTC time whereas use `/` for local time.
+
+```javascript
+console.log(new Date('2019-01-01'));
+/**
+ * -> Tue Jan 01 2019 08:00:00 GMT+0800 (Taipei Standard Time)
+ * UTC time
+ */
+
+console.log(new Date('2019/01/01'));
+/**
+ * -> Tue Jan 01 2019 00:00:00 GMT+0800 (Taipei Standard Time)
+ * local time
+ */
+```
+
+🔗 reference: [3/14/2012 blog from danvk Comparing FF/IE/Chrome on Parsing Date Strings](http://dygraphs.com/date-formats.html)
+
+### `monthIndex`
+
+`monthIndex` is beginning with `0` for January to `11` for December.
+
+```javascript
+new Date(2019, 1, 1, 0, 0, 0, 0);
+// -> Fri Feb 01 2019 00:00:00 GMT+0800 (Taipei Standard Time)
+new Date(2019, 0, 1, 0, 0, 0, 0);
+// -> Tue Jan 01 2019 00:00:00 GMT+0800 (Taipei Standard Time)
+new Date('1989-02-13').getMonth();
+// -> 1
+```
+
+🔗 reference: [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+### Date Libraries
+
+- [date-fns](https://date-fns.org/)(recommended)
+- [Moment.js](https://momentjs.com/)
+
 ## Equality
 
 <!-- TODO: Table component -->

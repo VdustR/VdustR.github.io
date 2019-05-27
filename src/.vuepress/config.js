@@ -14,7 +14,7 @@ module.exports = {
     sidebar: [
       {
         title: 'Dev',
-        children: ['dev/common', 'dev/javascript', 'dev/vuepress'],
+        children: ['dev/common', 'dev/javascript', 'dev/react', 'dev/vuepress'],
       },
       {
         title: 'Tools',

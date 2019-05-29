@@ -133,6 +133,24 @@ const crypto = require('crypto');
 
 const getRandom = (() => {
   const maxMax = 2 ** 32 - 1;
+  const getRandom = (min = 0, max = maxMax) => {
+    if (min < 0) throw new Error(`[getRandom] min is less than 0, min: ${min}`);
+    if (max > maxMax)
+      throw new Error(`[getRandom] max is greater than ${maxMax}, max: ${max}`);
+    if (min > max)
+      throw new Error(
+        `[getRandom] min is greater than max, min: ${min}, max: ${max}`
+      );
+    return min + (crypto.randomBytes(4).readUInt32BE() % (max - min + 1));
+  };
+  return getRandom;
+})();
+
+// node / thread
+const crypto = require('crypto');
+
+const getRandom = (() => {
+  const maxMax = 2 ** 32 - 1;
   const getRandom = (min = 0, max = maxMax) =>
     new Promise(resolve => {
       if (min < 0)

@@ -110,10 +110,20 @@ More info: [Float Precision](/dev/common.html#float-precision).
 > `Math.random()` does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the [window.crypto.getRandomValues()](https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues) method.
 
 ```js
-// browser
+/**
+ * browser
+ * getRandom(count: number): number[]
+ * getRandom({
+ *   count?: number,
+ *   min?: number,
+ *   max?: number,
+ * }): number[]
+ */
 const getRandom = (() => {
   const maxMax = 2 ** 32 - 1;
-  const getRandom = (min = 0, max = maxMax) => {
+  const getRandom = options => {
+    let { count = 1, min = 0, max = maxMax } =
+      typeof options === 'object' ? options : { count: options };
     if (min < 0) throw new Error(`[getRandom] min is less than 0, min: ${min}`);
     if (max > maxMax)
       throw new Error(`[getRandom] max is greater than ${maxMax}, max: ${max}`);
@@ -121,19 +131,31 @@ const getRandom = (() => {
       throw new Error(
         `[getRandom] min is greater than max, min: ${min}, max: ${max}`
       );
-    return (
-      min + (crypto.getRandomValues(new Uint32Array(1))[0] % (max - min + 1))
+    return Array.from(
+      crypto.getRandomValues(new Uint32Array(count)),
+      v => min + (v % (max - min + 1))
     );
   };
   return getRandom;
 })();
 
-// node
+/**
+ * node
+ * getRandom(count: number): number[]
+ * getRandom({
+ *   count?: number,
+ *   min?: number,
+ *   max?: number,
+ * }): number[]
+ */
 const crypto = require('crypto');
 
 const getRandom = (() => {
   const maxMax = 2 ** 32 - 1;
-  const getRandom = (min = 0, max = maxMax) => {
+  const byte = 32 / 8;
+  const getRandom = options => {
+    let { count = 1, min = 0, max = maxMax } =
+      typeof options === 'object' ? options : { count: options };
     if (min < 0) throw new Error(`[getRandom] min is less than 0, min: ${min}`);
     if (max > maxMax)
       throw new Error(`[getRandom] max is greater than ${maxMax}, max: ${max}`);
@@ -141,18 +163,32 @@ const getRandom = (() => {
       throw new Error(
         `[getRandom] min is greater than max, min: ${min}, max: ${max}`
       );
-    return min + (crypto.randomBytes(4).readUInt32BE() % (max - min + 1));
+    const random = crypto.randomBytes(count * byte);
+    return Array.from(
+      Array(count),
+      (v, i) => min + (random.readUInt32BE(i * byte) % (max - min + 1))
+    );
   };
   return getRandom;
 })();
 
-// node / multiple / async / thread
+/**
+ * node / multiple / async / thread
+ * await getRandom(count: number): number[]
+ * await getRandom({
+ *   count?: number,
+ *   min?: number,
+ *   max?: number,
+ * }): number[]
+ */
 const crypto = require('crypto');
 
 const getRandom = (() => {
   const maxMax = 2 ** 32 - 1;
-  const getRandom = (count = 1, min = 0, max = maxMax) =>
+  const getRandom = options =>
     new Promise(resolve => {
+      let { count = 1, min = 0, max = maxMax } =
+        typeof options === 'object' ? options : { count: options };
       if (min < 0)
         throw new Error(`[getRandom] min is less than 0, min: ${min}`);
       if (max > maxMax)
@@ -166,7 +202,7 @@ const getRandom = (() => {
       const a = new Uint32Array(count);
       crypto.randomFill(a, (err, buf) => {
         if (err) throw err;
-        resolve([...buf.map(v => min + (v % (max - min + 1)))]);
+        resolve(Array.from(buf, v => min + (v % (max - min + 1))));
       });
     });
   return getRandom;

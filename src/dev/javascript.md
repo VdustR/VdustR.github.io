@@ -146,12 +146,12 @@ const getRandom = (() => {
   return getRandom;
 })();
 
-// node / thread
+// node / multiple / async / thread
 const crypto = require('crypto');
 
 const getRandom = (() => {
   const maxMax = 2 ** 32 - 1;
-  const getRandom = (min = 0, max = maxMax) =>
+  const getRandom = (count = 1, min = 0, max = maxMax) =>
     new Promise(resolve => {
       if (min < 0)
         throw new Error(`[getRandom] min is less than 0, min: ${min}`);
@@ -163,10 +163,10 @@ const getRandom = (() => {
         throw new Error(
           `[getRandom] min is greater than max, min: ${min}, max: ${max}`
         );
-      const a = new Uint32Array(1);
-      crypto.randomFill(a, (err, [buf]) => {
+      const a = new Uint32Array(count);
+      crypto.randomFill(a, (err, buf) => {
         if (err) throw err;
-        resolve(min + (buf % (max - min + 1)));
+        resolve([...buf.map(v => min + (v % (max - min + 1)))]);
       });
     });
   return getRandom;
@@ -175,6 +175,8 @@ const getRandom = (() => {
 
 Reference:
 
+- [🔗 crypto.randomBytes()](https://nodejs.org/dist/latest-v12.x/docs/api/crypto.html#crypto_crypto_randombytes_size_callback)
+- [🔗 crypto.randomFill()](https://nodejs.org/dist/latest-v12.x/docs/api/crypto.html#crypto_crypto_randomfill_buffer_offset_size_callback)
 - [🔗 Crypto​.get​Random​Values()](https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues)
 - [🔗 Math​.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
 

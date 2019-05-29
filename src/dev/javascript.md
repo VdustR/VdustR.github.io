@@ -105,6 +105,34 @@ More info: [Float Precision](/dev/common.html#float-precision).
 
 🔗 reference: [Node​List](https://developer.mozilla.org/zh-TW/docs/Web/API/NodeList)
 
+## Random
+
+> `Math.random()` does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the [window.crypto.getRandomValues()](https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues) method.
+
+```js
+const getRandom = (() => {
+  const maxMax = 2 ** 32 - 1;
+  const getRandom = (min = 0, max = maxMax) => {
+    if (min < 0) throw new Error(`[getRandom] min is less than 0, min: ${min}`);
+    if (max > maxMax)
+      throw new Error(`[getRandom] max is greater than ${maxMax}, max: ${max}`);
+    if (min > max)
+      throw new Error(
+        `[getRandom] min is greater than max, min: ${min}, max: ${max}`
+      );
+    return (
+      min + (crypto.getRandomValues(new Uint32Array(1))[0] % (max - min + 1))
+    );
+  };
+  return getRandom;
+})();
+```
+
+Reference:
+
+- [🔗 Crypto​.get​Random​Values()](https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues)
+- [🔗 Math​.random()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random)
+
 ## RegExp
 
 ### RegExp.prototype​.test()

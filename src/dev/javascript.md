@@ -110,6 +110,7 @@ More info: [Float Precision](/dev/common.html#float-precision).
 > `Math.random()` does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the [window.crypto.getRandomValues()](https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues) method.
 
 ```js
+// browser
 const getRandom = (() => {
   const maxMax = 2 ** 32 - 1;
   const getRandom = (min = 0, max = maxMax) => {
@@ -124,6 +125,32 @@ const getRandom = (() => {
       min + (crypto.getRandomValues(new Uint32Array(1))[0] % (max - min + 1))
     );
   };
+  return getRandom;
+})();
+
+// node
+const crypto = require('crypto');
+
+const getRandom = (() => {
+  const maxMax = 2 ** 32 - 1;
+  const getRandom = (min = 0, max = maxMax) =>
+    new Promise(resolve => {
+      if (min < 0)
+        throw new Error(`[getRandom] min is less than 0, min: ${min}`);
+      if (max > maxMax)
+        throw new Error(
+          `[getRandom] max is greater than ${maxMax}, max: ${max}`
+        );
+      if (min > max)
+        throw new Error(
+          `[getRandom] min is greater than max, min: ${min}, max: ${max}`
+        );
+      const a = new Uint32Array(1);
+      crypto.randomFill(a, (err, [buf]) => {
+        if (err) throw err;
+        resolve(min + (buf % (max - min + 1)));
+      });
+    });
   return getRandom;
 })();
 ```

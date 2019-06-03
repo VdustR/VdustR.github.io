@@ -109,16 +109,26 @@ More info: [Float Precision](/dev/common.html#float-precision).
 
 > `Math.random()` does not provide cryptographically secure random numbers. Do not use them for anything related to security. Use the Web Crypto API instead, and more precisely the [window.crypto.getRandomValues()](https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues) method.
 
-```js
+API:
+
+```ts
+getRandom(count: number): number[]
+getRandom({
+  count?: number,
+  min?: number,
+  max?: number,
+}): number[]
 /**
- * browser
- * getRandom(count: number): number[]
- * getRandom({
- *   count?: number,
- *   min?: number,
- *   max?: number,
- * }): number[]
+ * count:
+ *   browser: 1 ~ 2 ** 14
+ *   node: 1 ~ Out Of Memory
+ * min, max: 0 ~ 2 ** 32 - 1
  */
+```
+
+Inline:
+
+```js
 const getRandom = (() => {
   const maxMax = 2 ** 32 - 1;
   const getRandom = options => {
@@ -138,75 +148,141 @@ const getRandom = (() => {
   };
   return getRandom;
 })();
+```
 
-/**
- * node
- * getRandom(count: number): number[]
- * getRandom({
- *   count?: number,
- *   min?: number,
- *   max?: number,
- * }): number[]
- */
+Module:
+
+```js
+import { inspect } from 'util';
+
+const maxMax = 2 ** 32 - 1;
+
+const getRandom = options => {
+  let { count = 1, min = 0, max = maxMax } =
+    typeof options === 'object' ? options : { count: options };
+  if (min < 0)
+    throw new Error(`[getRandom] min is less than 0, min: ${inspect(min)}`);
+  if (max > maxMax)
+    throw new Error(
+      `[getRandom] max is greater than ${inspect(maxMax)}, max: ${inspect(max)}`
+    );
+  if (min > max)
+    throw new Error(
+      `[getRandom] min is greater than max, min: ${inspect(
+        min
+      )}, max: ${inspect(max)}`
+    );
+  return Array.from(
+    crypto.getRandomValues(new Uint32Array(count)),
+    v => min + (v % (max - min + 1))
+  );
+};
+
+export default getRandom;
+```
+
+Typescript:
+
+```ts
+import { inspect } from 'util';
+
+const maxMax: number = 2 ** 32 - 1;
+interface Options {
+  count?: number;
+  min?: number;
+  max?: number;
+}
+
+const getRandom = (options?: number | Options): number[] => {
+  let { count = 1, min = 0, max = maxMax } =
+    typeof options === 'object' ? options : { count: options };
+  if (min < 0)
+    throw new Error(`[getRandom] min is less than 0, min: ${inspect(min)}`);
+  if (max > maxMax)
+    throw new Error(
+      `[getRandom] max is greater than ${inspect(maxMax)}, max: ${inspect(max)}`
+    );
+  if (min > max)
+    throw new Error(
+      `[getRandom] min is greater than max, min: ${inspect(
+        min
+      )}, max: ${inspect(max)}`
+    );
+  return Array.from(
+    crypto.getRandomValues(new Uint32Array(count)),
+    v => min + (v % (max - min + 1))
+  );
+};
+
+export default getRandom;
+```
+
+Node:
+
+```js
 const crypto = require('crypto');
+const { inspect } = require('util');
 
-const getRandom = (() => {
-  const maxMax = 2 ** 32 - 1;
-  const byte = 32 / 8;
-  const getRandom = options => {
+const maxMax = 2 ** 32 - 1;
+const byte = 32 / 8;
+const getRandom = options => {
+  let { count = 1, min = 0, max = maxMax } =
+    typeof options === 'object' ? options : { count: options };
+  if (min < 0)
+    throw new Error(`[getRandom] min is less than 0, min: ${inspect(min)}`);
+  if (max > maxMax)
+    throw new Error(
+      `[getRandom] max is greater than ${inspect(maxMax)}, max: ${inspect(max)}`
+    );
+  if (min > max)
+    throw new Error(
+      `[getRandom] min is greater than max, min: ${inspect(
+        min
+      )}, max: ${inspect(max)}`
+    );
+  const random = crypto.randomBytes(count * byte);
+  return Array.from(
+    Array(count),
+    (v, i) => min + (random.readUInt32BE(i * byte) % (max - min + 1))
+  );
+};
+
+module.exports = getRandom;
+```
+
+Node / multiple / async / thread:
+
+```js
+const crypto = require('crypto');
+const { inspect } = require('util');
+
+const maxMax = 2 ** 32 - 1;
+const getRandom = options =>
+  new Promise(resolve => {
     let { count = 1, min = 0, max = maxMax } =
       typeof options === 'object' ? options : { count: options };
-    if (min < 0) throw new Error(`[getRandom] min is less than 0, min: ${min}`);
+    if (min < 0)
+      throw new Error(`[getRandom] min is less than 0, min: ${inspect(min)}`);
     if (max > maxMax)
-      throw new Error(`[getRandom] max is greater than ${maxMax}, max: ${max}`);
+      throw new Error(
+        `[getRandom] max is greater than ${inspect(maxMax)}, max: ${inspect(
+          max
+        )}`
+      );
     if (min > max)
       throw new Error(
-        `[getRandom] min is greater than max, min: ${min}, max: ${max}`
+        `[getRandom] min is greater than max, min: ${inspect(
+          min
+        )}, max: ${inspect(max)}`
       );
-    const random = crypto.randomBytes(count * byte);
-    return Array.from(
-      Array(count),
-      (v, i) => min + (random.readUInt32BE(i * byte) % (max - min + 1))
-    );
-  };
-  return getRandom;
-})();
-
-/**
- * node / multiple / async / thread
- * await getRandom(count: number): number[]
- * await getRandom({
- *   count?: number,
- *   min?: number,
- *   max?: number,
- * }): number[]
- */
-const crypto = require('crypto');
-
-const getRandom = (() => {
-  const maxMax = 2 ** 32 - 1;
-  const getRandom = options =>
-    new Promise(resolve => {
-      let { count = 1, min = 0, max = maxMax } =
-        typeof options === 'object' ? options : { count: options };
-      if (min < 0)
-        throw new Error(`[getRandom] min is less than 0, min: ${min}`);
-      if (max > maxMax)
-        throw new Error(
-          `[getRandom] max is greater than ${maxMax}, max: ${max}`
-        );
-      if (min > max)
-        throw new Error(
-          `[getRandom] min is greater than max, min: ${min}, max: ${max}`
-        );
-      const a = new Uint32Array(count);
-      crypto.randomFill(a, (err, buf) => {
-        if (err) throw err;
-        resolve(Array.from(buf, v => min + (v % (max - min + 1))));
-      });
+    const a = new Uint32Array(count);
+    crypto.randomFill(a, (err, buf) => {
+      if (err) throw err;
+      resolve(Array.from(buf, v => min + (v % (max - min + 1))));
     });
-  return getRandom;
-})();
+  });
+
+module.exports = getRandom;
 ```
 
 Reference:

@@ -10,6 +10,8 @@ Mac:
 brew install fish
 ```
 
+### Set As Default Shell<Badge text="optional" />
+
 Make sure where fish is:
 
 ```bash

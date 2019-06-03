@@ -30,7 +30,7 @@ export default {
   background: #011627;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
   text-align: center;
-  z-index: 2;
+  z-index: 3; /* higher than `div[class*=language-]:before` */
   color: #ffffff;
 }
 

@@ -165,7 +165,7 @@ vi ~/.config/fish/conf.d/nvm.fish
 and enter:
 
 ```bash
-nvm install node
+nvm use node
 ```
 
 then try another session.

@@ -72,3 +72,9 @@ The short link is dead, so I wrote a new one.
 **DEPRECATED**: [Poi](https://poi.js.org/) is recommended.
 
 - [🔗 npm](https://www.npmjs.com/package/@vp-tw/react-scripts-extendable)
+
+## Demo
+
+### React
+
+- [🔗 infinite loader](https://codesandbox.io/s/infinite-loader-gbykj)

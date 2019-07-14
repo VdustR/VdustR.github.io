@@ -1,16 +1,14 @@
-# Hello, World!
-
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
 
 > Fancy design. Simple Life.
 
-## ViPro's Note
+## Repositories
+
+### ViPro's Note
 
 This site.
 
 [🔗 GitHub](https://github.com/VdustR/VdustR.github.io)
-
-## Repositories
 
 ### Vue Material <Badge text="Core Developer" />
 
@@ -80,3 +78,7 @@ The short link is dead, so I wrote a new one.
 ### React
 
 - [🔗 infinite loader](https://codesandbox.io/s/infinite-loader-gbykj)
+
+- [🔗 example-material-ui-mdx](https://github.com/VdustR/example-material-ui-mdx)
+
+  Material UI MDX with Prism Example

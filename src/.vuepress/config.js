@@ -13,17 +13,21 @@ module.exports = {
     ],
     sidebar: [
       {
+        title: 'About Me',
+        path: '/',
+      },
+      {
         title: 'Dev',
-        children: ['dev/common', 'dev/javascript', 'dev/react', 'dev/vuepress'],
+        children: [
+          '/dev/common',
+          '/dev/javascript',
+          '/dev/react',
+          '/dev/vuepress',
+        ],
       },
       {
         title: 'Tools',
-        children: [
-          'tools/fish',
-          'tools/hyper',
-          'tools/vscode',
-          'tools/screenshot',
-        ],
+        children: ['/tools/', '/tools/fish'],
       },
     ],
   },

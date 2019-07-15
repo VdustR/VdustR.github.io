@@ -1,22 +1,26 @@
 # Nice Tools
 
-## [Visual Studio Code](https://code.visualstudio.com/)
+## Development
+
+### [Visual Studio Code](https://code.visualstudio.com/)
 
 Visual Studio Code is a code editor redefined and optimized for building and debugging modern web and cloud applications. Visual Studio Code is free and available on your favorite platform - Linux, macOS, and Windows.
 
-## [Fork](https://git-fork.com/)
+### [Fork](https://git-fork.com/)
 
 A fast and friendly git client for Mac and Windows.
 
-## [fish shell](./fish.md)
+### [fish shell](./fish.md)
 
 fish is a smart and user-friendly command line shell for Linux, macOS, and the rest of the family.
 
-## [Hyper.js](https://hyper.is/)
+### [Hyper.js](https://hyper.is/)
 
 A terminal built on web technologies.
 
-## [Krita](https://krita.org/)
+## Art
+
+### [Krita](https://krita.org/)
 
 Krita is a professional FREE and open source painting program. It is made by artists that want to see affordable art tools for everyone.
 

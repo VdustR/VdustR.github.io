@@ -34,13 +34,21 @@ Krita is a professional FREE and open source painting program. It is made by art
 
 From project planning and source code management to CI/CD and monitoring, GitLab is a single application for the entire DevOps lifecycle. Only GitLab enables Concurrent DevOps to make the software lifecycle 200% faster.
 
+Similar services: [GitHub](https://github.com/), [GitLab](https://gitlab.com/explore), [Bitbucket](https://bitbucket.org/)
+
+Alternative: [Gitea](https://gitea.io/)
+
 ### [ownCloud](https://owncloud.org/)
 
 Access & share your files, calendars, contacts, mail & more from any device; on your terms.
 
+Similar services: [Dropbox](https://www.dropbox.com/), [Google Drive](https://www.google.com/drive/), [One Drive](https://onedrive.live.com/), [iCloud](https://www.icloud.com/)
+
 ### [Rocket.Chat](https://rocket.chat/)
 
 Rocket.Chat is free, unlimited and open source. Replace email, HipChat & Slack with the ultimate team chat software solution.
+
+Similar services: [Slack](https://slack.com/), [Discord](https://discordapp.com/), [Microsoft Teams](https://teams.microsoft.com/)
 
 ### [CodiMD](https://github.com/hackmdio/codimd)
 

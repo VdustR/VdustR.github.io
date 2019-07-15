@@ -42,6 +42,12 @@ Access & share your files, calendars, contacts, mail & more from any device; on 
 
 Rocket.Chat is free, unlimited and open source. Replace email, HipChat & Slack with the ultimate team chat software solution.
 
+### [CodiMD](https://github.com/hackmdio/codimd)
+
+CodiMD lets you collaborate in real-time with markdown. Built on HackMD source code, CodiMD lets you host and control your team's content with speed and ease.
+
+Similar services: [HackMD](https://hackmd.io/)
+
 ## Fonts
 
 ### [Victor Mono](https://rubjo.github.io/victor-mono/)

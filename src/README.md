@@ -27,6 +27,21 @@ Material Design for Vue.js.
 - [🔗 template-react](https://github.com/VdustR/template-react)
 - [🔗 template-vue](https://github.com/VdustR/template-vue)
 
+### Font Splitter
+
+- [🔗 GitHub](https://github.com/VdustR/font-splitter)
+- [🔗 Docker Hub](https://hub.docker.com/r/vdustr/font-splitter)
+- [🔗 npm](https://www.npmjs.com/package/font-splitter)
+
+### taipei-sans-tc <Badge text="Splitter" />
+
+台北黑體 Taipei Sans TC
+
+- [翰字鑄造 JT Foundry](https://sites.google.com/view/jtfoundry)
+- [Facebook](https://www.facebook.com/jtfoundry/)
+- [🔗 GitHub](https://github.com/VdustR/taipei-sans-tc)
+- [🔗 npm](https://www.npmjs.com/package/taipei-sans-tc)
+
 ### docker-woff2
 
 A dockerized [woff2](https://github.com/google/woff2) image.

@@ -33,14 +33,15 @@ Material Design for Vue.js.
 - [🔗 Docker Hub](https://hub.docker.com/r/vdustr/font-splitter)
 - [🔗 npm](https://www.npmjs.com/package/font-splitter)
 
-### taipei-sans-tc <Badge text="Splitter" />
+### taipei-sans-tc <Badge text="Publish Only" /> <Badge text="Demo Page" />
 
 台北黑體 Taipei Sans TC
 
-- [翰字鑄造 JT Foundry](https://sites.google.com/view/jtfoundry)
-- [Facebook](https://www.facebook.com/jtfoundry/)
+- [🔗 翰字鑄造 JT Foundry](https://sites.google.com/view/jtfoundry)
+- [🔗 Facebook](https://www.facebook.com/jtfoundry/)
 - [🔗 GitHub](https://github.com/VdustR/taipei-sans-tc)
 - [🔗 npm](https://www.npmjs.com/package/taipei-sans-tc)
+- [🔗 Demo Page](https://vdustr.github.io/taipei-sans-tc/)
 
 ### docker-woff2
 

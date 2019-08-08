@@ -6,7 +6,7 @@ Official site: <https://fishshell.com/>
 
 Mac:
 
-```bash
+```sh
 brew install fish
 ```
 
@@ -14,14 +14,14 @@ brew install fish
 
 Make sure where fish is:
 
-```bash
+```sh
 $ which fish
 /usr/local/bin/fish
 ```
 
 Check if fish is a system shell now:
 
-```bash
+```sh
 cat /etc/shells
 ```
 
@@ -41,7 +41,7 @@ You can set it as default shell:
 
 Set it as default shell:
 
-```bash
+```sh
 chsh -s /usr/local/bin/fish
 ```
 
@@ -51,7 +51,7 @@ chsh -s /usr/local/bin/fish
 
 Install:
 
-```bash
+```sh
 curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
 ```
 
@@ -61,7 +61,7 @@ If you can't use `fisher` command, try re-login the shell.
 
 [Spacefish](https://github.com/matchai/spacefish) is a minimalistic, powerful and extremely customizable Fish Shell prompt. It combines everything you may need for convenient work, without unnecessary complications, like a real spacefish.
 
-```bash
+```sh
 fisher add matchai/spacefish
 ```
 
@@ -69,7 +69,7 @@ fisher add matchai/spacefish
 
 List packages:
 
-```bash
+```sh
 fisher ls
 
 fisher ls <regexp>
@@ -78,32 +78,32 @@ fisher ls "^gitlab|fish-.*"
 
 Update packages:
 
-```bash
+```sh
 fisher
 ```
 
 Update fisher:
 
-```bash
+```sh
 fisher self-update
 ```
 
 Remove package:
 
-```bash
+```sh
 fisher rm <packageName>
 fisher rm rafaelrinaldi/pure
 ```
 
 Remove all packages:
 
-```bash
+```sh
 fisher ls | fisher rm
 ```
 
 Uninstall fisher:
 
-```bash
+```sh
 fisher self-uninstall
 ```
 
@@ -140,32 +140,40 @@ Reference: [Fixing Perl Warning: Setting locale failed on Mac OS X Mavericks](ht
 
 To install or update nvm, you can use the install script using cURL:
 
-```bash
+```sh
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ```
 
 or Wget:
 
-```bash
+```sh
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
 ```
 
 Then install [fish-nvm](https://github.com/FabioAntunes/fish-nvm):
 
-```bash
+```sh
 fisher add FabioAntunes/fish-nvm edc/bass
 ```
 
 If node is not loaded at start, create a init script:
 
-```bash
+```sh
 vi ~/.config/fish/conf.d/nvm.fish
 ```
 
 and enter:
 
-```bash
+```sh
 nvm use node
+```
+
+If you always want to use the latest version, use the followed scripts instead:
+
+```sh
+nvm install node
+# latest npm and yarn
+npm i -g npm yarn
 ```
 
 then try another session.
@@ -174,13 +182,13 @@ then try another session.
 
 Migrate with [docker(_archived_)](https://github.com/barnybug-archive/docker-fish-completion):
 
-```bash
+```sh
 fisher add barnybug/docker-fish-completion
 ```
 
 Migrate with [docker-compose](https://github.com/brgmnn/fish-docker-compose):
 
-```bash
+```sh
 fisher add  brgmnn/fish-docker-compose
 ```
 

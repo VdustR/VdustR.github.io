@@ -26,6 +26,7 @@ Material Design for Vue.js.
 - [🔗 template-node](https://github.com/VdustR/template-node)
 - [🔗 template-react](https://github.com/VdustR/template-react)
 - [🔗 template-vue](https://github.com/VdustR/template-vue)
+- [🔗 template-lerna](https://github.com/VdustR/template-lerna)
 
 ### Font Splitter
 

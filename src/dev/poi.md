@@ -31,9 +31,9 @@ module.exports = {
 };
 ```
 
-### Issue
+There is a issue.
 
-Because there is a [PrintStatusPlugin](https://github.com/egoist/poi/blob/a89ecd0/core/poi/lib/webpack/PrintStatusPlugin.js) to clear console and it make the result of Unused Webpack Plugin disappeared.
+[PrintStatusPlugin](https://github.com/egoist/poi/blob/a89ecd0/core/poi/lib/webpack/PrintStatusPlugin.js) will clear console including the results of Unused Webpack Plugin on every update.
 
 You can inspect with this command:
 

@@ -23,6 +23,7 @@ module.exports = {
           '/dev/javascript',
           '/dev/react',
           '/dev/vuepress',
+          '/dev/poi',
         ],
       },
       {

@@ -71,7 +71,7 @@ A promise extension for over duration, timeout, and expiration.
 
 ### Copy URL to clipboard
 
-Inspired from [Copy Title+URL to clipboard](https://chrome.google.com/webstore/detail/copy-title%20url-to-clipboa/hbnaclhngkhpmpgmfakaghgjbblokeeh).
+Inspired from [_Copy Title+URL to clipboard (deprecated)_](https://chrome.google.com/webstore/detail/copy-title%20url-to-clipboa/hbnaclhngkhpmpgmfakaghgjbblokeeh).
 
 The short link is dead, so I wrote a new one.
 

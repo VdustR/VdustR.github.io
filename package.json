@@ -26,8 +26,7 @@
   "dependencies": {
     "date-fns": "^2.7.0",
     "prism-theme-night-owl": "^1.2.0",
-    "simple-icons": "^1.19.1",
-    "taipei-sans-tc": "^0.1.1"
+    "simple-icons": "^1.19.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",

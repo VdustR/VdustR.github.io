@@ -9165,11 +9165,6 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-taipei-sans-tc@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/taipei-sans-tc/-/taipei-sans-tc-0.1.1.tgz#304886441ec353a4a7f68b48a10e349f8aa0a5f8"
-  integrity sha512-GCvdO+SATITfm128bT+fFmbpVW8+o0zLMVlNskSOk3CBghNzfqj4tvwTbIQ9vmvftd31s5UNypLA3aIw/IG6RQ==
-
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/tapable/-/tapable-1.1.3.tgz#a1fccc06b58db61fd7a45da2da44f5f3a3e67ba2"

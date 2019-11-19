@@ -1,12 +1,14 @@
 @require 'code'
-@require '~@/.vuepress/assets/dank-mono.css'
 @require '~prism-theme-night-owl/style.css'
 
 html, body
   background-color $codeBgColor
 
 body
-  font-family dm, Taipei Sans TC, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+  font-family source-han-sans-cjk-tc, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif
+
+blockquote
+  font-family source-han-serif-tc, serif
 
 .navbar
   background-color $codeBgColor
@@ -28,7 +30,10 @@ blockquote
   border-left .5rem solid #637777
 
 code, kbd, .line-number
-  font-family dm, Taipei Sans TC, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+  font-family "Victor Mono", source-han-sans-cjk-tc, source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace
+code
+  .token.keyword
+    font-style: italic
 
 tr
   border-top 1px solid $borderColor

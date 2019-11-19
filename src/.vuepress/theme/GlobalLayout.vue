@@ -3,8 +3,6 @@
 </template>
 
 <script>
-import 'taipei-sans-tc';
-
 export default {
   computed: {
     layout() {

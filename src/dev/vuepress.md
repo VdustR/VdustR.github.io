@@ -30,16 +30,24 @@ module.exports = {
 
 Find `this.$page.lastUpdated` and format it.
 
-For example, if you extend `@vuepress/theme-default`, you could clone the [`Page.vue`](https://github.com/vuejs/vuepress/blob/3b14375/packages/%40vuepress/theme-default/components/Page.vue) to `.vuepress/theme/components/Page.vue` and modify it:
+For example, if you extended `@vuepress/theme-default`, you could create `.vuepress/theme/components/PageEdit.vue`:
 
-```diff
-+ import format from 'date-fns/format';
-    computed: {
-      lastUpdated() {
--       return this.$page.lastUpdated
-+       return (
-+         this.$page.lastUpdated &&
-+         format(this.$page.lastUpdated, 'yyyy/MM/dd HH:mm:ss')
-+       );
-      },
+```vue
+<script>
+import format from 'date-fns/format';
+import PageEdit from '@vuepress/theme-default/components/PageEdit';
+
+export default {
+  ...PageEdit,
+  computed: {
+    ...PageEdit.computed,
+    lastUpdated() {
+      return (
+        this.$page.lastUpdated &&
+        format(this.$page.lastUpdated, 'yyyy/MM/dd HH:mm:ss')
+      );
+    },
+  },
+};
+</script>
 ```

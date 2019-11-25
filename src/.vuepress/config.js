@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         title: 'Design',
-        children: ['/design/color'],
+        children: ['/design/color', '/design/font'],
       },
       {
         title: 'Tools',

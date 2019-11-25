@@ -1,21 +1,21 @@
 # Font
 
-## Coding Fonts
+## Monospaced Fonts With Programming Ligatures
 
-| Font                                                                         | Ligature | Italic | Free |
-| ---------------------------------------------------------------------------- | -------- | ------ | ---- |
-| [Cascadia Code](https://github.com/microsoft/cascadia-code)                  | ✅       |        | ✅   |
-| [Comic Code](https://www.myfonts.com/fonts/tabular-type-foundry/comic-code/) | ✅       | ✅     |      |
-| [Dank Mono](https://dank.sh/)                                                | ✅       | ✅     |      |
-| [DejaVu Sans Code ](https://github.com/SSNikolaevich/DejaVuSansCode)         | ✅       |        | ✅   |
-| [Fira Code](https://github.com/tonsky/FiraCode)                              | ✅       |        | ✅   |
-| [Fixedsys Excelsior](https://github.com/kika/fixedsys)                       | ✅       |        | ✅   |
-| [Hasklig](https://github.com/i-tu/Hasklig)                                   | ✅       | ✅     | ✅   |
-| [Iosevka](https://typeof.net/Iosevka/)                                       | ✅       | ✅     | ✅   |
-| [Monoid](https://larsenwork.com/monoid/)                                     | ✅       |        | ✅   |
-| [Operator Mono](https://www.cufonfonts.com/font/operator-mono)               | ✅       | ✅     |      |
-| [PragmataPro](https://www.fsd.it/shop/fonts/pragmatapro/)                    | ✅       |        |      |
-| [Victor Mono](https://rubjo.github.io/victor-mono/)                          | ✅       | ✅     | ✅   |
+| Font                                                                         | Italic | Free |
+| ---------------------------------------------------------------------------- | ------ | ---- |
+| [Cascadia Code](https://github.com/microsoft/cascadia-code)                  |        | ✅   |
+| [Comic Code](https://www.myfonts.com/fonts/tabular-type-foundry/comic-code/) | ✅     |      |
+| [Dank Mono](https://dank.sh/)                                                | ✅     |      |
+| [DejaVu Sans Code ](https://github.com/SSNikolaevich/DejaVuSansCode)         |        | ✅   |
+| [Fira Code](https://github.com/tonsky/FiraCode)                              |        | ✅   |
+| [Fixedsys Excelsior](https://github.com/kika/fixedsys)                       |        | ✅   |
+| [Hasklig](https://github.com/i-tu/Hasklig)                                   | ✅     | ✅   |
+| [Iosevka](https://typeof.net/Iosevka/)                                       | ✅     | ✅   |
+| [Monoid](https://larsenwork.com/monoid/)                                     |        | ✅   |
+| [Operator Mono](https://www.cufonfonts.com/font/operator-mono)               | ✅     |      |
+| [PragmataPro](https://www.fsd.it/shop/fonts/pragmatapro/)                    |        |      |
+| [Victor Mono](https://rubjo.github.io/victor-mono/)                          | ✅     | ✅   |
 
 ## Web Fonts
 

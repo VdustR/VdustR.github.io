@@ -28,7 +28,7 @@ module.exports = {
       },
       {
         title: 'Tools',
-        children: ['/tools/', '/tools/fish'],
+        children: ['/tools/', '/tools/mac', '/tools/fish'],
       },
     ],
   },

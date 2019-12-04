@@ -24,9 +24,9 @@
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
   },
   "dependencies": {
-    "date-fns": "^2.7.0",
+    "date-fns": "^2.8.1",
     "prism-theme-night-owl": "^1.2.0",
-    "simple-icons": "^1.19.1"
+    "simple-icons": "^1.20.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
@@ -41,8 +41,8 @@
     "commitlint": "^8.2.0",
     "conventional-changelog-cli": "^2.0.28",
     "cz-conventional-changelog": "^3.0.2",
-    "eslint": "^6.6.0",
-    "eslint-config-prettier": "^6.6.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-node": "^10.0.0",
@@ -50,7 +50,7 @@
     "eslint-plugin-standard": "^4.0.1",
     "eslint-plugin-vue": "^6.0.1",
     "husky": "^3.1.0",
-    "lint-staged": "^9.4.3",
+    "lint-staged": "^9.5.0",
     "node-sass": "^4.13.0",
     "prettier": "^1.19.1",
     "sass-loader": "^8.0.0",

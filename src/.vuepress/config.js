@@ -17,6 +17,10 @@ module.exports = {
         path: '/',
       },
       {
+        title: 'Bin',
+        children: ['/bin/7z'],
+      },
+      {
         title: 'Dev',
         children: [
           '/dev/common',

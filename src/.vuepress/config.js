@@ -36,7 +36,7 @@ module.exports = {
       },
       {
         title: 'Shell',
-        children: ['/sh/fish'],
+        children: ['/sh/fish', '/sh/ternary'],
       },
       {
         title: 'Tools',

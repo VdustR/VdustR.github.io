@@ -35,8 +35,12 @@ module.exports = {
         children: ['/design/color', '/design/font'],
       },
       {
+        title: 'Shell',
+        children: ['/sh/fish'],
+      },
+      {
         title: 'Tools',
-        children: ['/tools/', '/tools/mac', '/tools/fish'],
+        children: ['/tools/', '/tools/mac'],
       },
     ],
   },

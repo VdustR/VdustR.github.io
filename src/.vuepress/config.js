@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         title: 'Bin',
-        children: ['/bin/7z', '/bin/pwd'],
+        children: ['/bin/7z', '/bin/date', '/bin/pwd'],
       },
       {
         title: 'Dev',

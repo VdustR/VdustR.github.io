@@ -7,9 +7,9 @@ $ date '+%Y-%m-%d %H:%M:%S.%N'
 2019-12-04 14:27:59.372201900
 ```
 
-Some OS like alpine do not support milliseconds
+Some OS like alpine does not support milliseconds
 
-Reference: <https://stackoverflow.com/questions/1401482/yyyy-mm-dd-format-date-in-shell-script/47216077>
+- Reference: <https://stackoverflow.com/questions/1401482/yyyy-mm-dd-format-date-in-shell-script/47216077>
 
 ## Timezone
 

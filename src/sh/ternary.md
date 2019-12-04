@@ -42,4 +42,4 @@ BAR=$(echo $([[ $FOO = foo1 ]] && echo bar1 || ([[ $FOO = foo2 ]] && echo bar2 |
 
 ---
 
-Reference: <https://stackoverflow.com/questions/3953645/ternary-operator-in-bash>
+- Reference: <https://stackoverflow.com/questions/3953645/ternary-operator-in-bash>

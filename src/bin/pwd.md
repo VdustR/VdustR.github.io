@@ -4,6 +4,12 @@
 
 ## Nginx Quick Test With Docker
 
+Any unix shells:
+
+```sh
+docker run -it --rm -v $PWD:/usr/share/nginx/html:ro -p 5000:80 nginx
+```
+
 bash:
 
 ```sh

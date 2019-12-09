@@ -21,6 +21,10 @@ module.exports = {
         children: ['/bin/7z', '/bin/date', '/bin/pwd'],
       },
       {
+        title: 'Bookmarks',
+        children: ['/bookmarks/generator'],
+      },
+      {
         title: 'Dev',
         children: [
           '/dev/common',

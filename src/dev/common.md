@@ -1,17 +1,5 @@
 # Common
 
-## Characters
-
-[🔗 BabelMap](http://www.babelstone.co.uk/Unicode/babelmap.html)
-
-### Emoji
-
-[🔗 Emojipedia](https://emojipedia.org/)
-
-### Symbol
-
-[🔗 List of symbols](https://en.wikipedia.org/wiki/List_of_symbols)
-
 ## Circular Dependency
 
 [🔗 Circular dependency](https://en.wikipedia.org/wiki/Circular_dependency)

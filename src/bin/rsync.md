@@ -9,7 +9,7 @@ Push files under a directory to a directory:
 # /a/b/c/1    /x/
 # /a/b/c/2
 # /a/b/c/3
-rsync -av -e ssh /a/b/c/ root@172.17.0.2:/x
+rsync -av -e ssh /a/b/c/ root@172.17.0.2:/x/
 # local       remote
 # /a/b/c/1    /x/1
 # /a/b/c/2    /x/2
@@ -23,7 +23,7 @@ Push a folder to a directory:
 # /a/b/c/1    /x/
 # /a/b/c/2
 # /a/b/c/3
-rsync -av -e ssh /a/b/c root@172.17.0.2:/x
+rsync -av -e ssh /a/b/c root@172.17.0.2:/x/
 # local       remote
 # /a/b/c/1    /x/c/1
 # /a/b/c/2    /x/c/2
@@ -72,6 +72,8 @@ $ rsync -av -e ssh --rsync-path="mkdir -p /x/y/z && rsync" /a/b/c/ root@172.17.0
 # /a/b/c/3    /x/y/z/3
 ```
 
+Notice that `mkdir -p` and `rsync` should works on remote.
+
 - Reference: <https://askubuntu.com/questions/561212/rsync-throwing-mkdir-cannot-create-directory-data-dir-1-dir-2-dir-3-no-suc>
 
 ## Delete
@@ -90,4 +92,49 @@ rsync -av -e ssh --delete /a/b/c/ root@172.17.0.2:/x/y/z/
 # local       remote
 # /a/b/c/1    /x/y/z/1
 # /a/b/c/3    /x/y/z/3
+```
+
+## Exclude
+
+```sh
+# local       remote
+# /a/b/c/1    /x/
+# /a/b/c/2
+# /a/b/c/3
+rsync -av -e ssh /a/b/c/ root@172.17.0.2:/x/ --exclude 2
+# local       remote
+# /a/b/c/1    /x/1
+# /a/b/c/2    /x/3
+# /a/b/c/3
+```
+
+Multiple:
+
+```sh
+# local       remote
+# /a/b/c/1    /x/
+# /a/b/c/2
+# /a/b/c/3
+rsync -av -e ssh /a/b/c/ root@172.17.0.2:/x/ --exclude 2 --exclude 3
+# local       remote
+# /a/b/c/1    /x/1
+# /a/b/c/2
+# /a/b/c/3
+```
+
+Wildcard:
+
+```sh
+# local          remote
+# /a/b/c/1       /x/
+# /a/b/c/2
+# /a/b/c/3
+# /a/b/c/4.md
+# /a/b/c/5.md
+# /a/b/c/6.md
+rsync -av -e ssh /a/b/c/ root@172.17.0.2:/x/ --exclude "*.md"
+# local       remote
+# /a/b/c/1    /x/1
+# /a/b/c/2
+# /a/b/c/3
 ```

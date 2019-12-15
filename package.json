@@ -10,8 +10,7 @@
   "homepage": "https://github.com/VdustR/VdustR.github.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/VdustR/VdustR.github.io.git",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+    "url": "https://github.com/VdustR/VdustR.github.io.git"
   },
   "bugs": {
     "url": "https://github.com/VdustR/VdustR.github.io/issues"
@@ -20,8 +19,7 @@
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src",
-    "commit": "git-cz",
-    "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+    "commit": "git-cz"
   },
   "dependencies": {
     "date-fns": "^2.8.1",
@@ -39,8 +37,6 @@
     "babel-eslint": "^10.0.3",
     "commitizen": "^4.0.3",
     "commitlint": "^8.2.0",
-    "conventional-changelog-cli": "^2.0.28",
-    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
     "eslint-config-standard": "^14.1.0",

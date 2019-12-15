@@ -18,7 +18,7 @@ module.exports = {
       },
       {
         title: 'Bin',
-        children: ['/bin/7z', '/bin/date', '/bin/pwd'],
+        children: ['/bin/7z', '/bin/date', '/bin/pwd', '/bin/rsync'],
       },
       {
         title: 'Bookmarks',

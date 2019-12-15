@@ -22,7 +22,7 @@ module.exports = {
       },
       {
         title: 'Bookmarks',
-        children: ['/bookmarks/generator', '/bookmarks/lookup'],
+        children: ['/bookmarks/generator'],
       },
       {
         title: 'Dev',

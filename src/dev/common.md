@@ -4,6 +4,10 @@
 
 [🔗 Circular dependency](https://en.wikipedia.org/wiki/Circular_dependency)
 
+## Emoji
+
+[🔗 Emojipedia](https://emojipedia.org/)
+
 ## Float Precision
 
 [🔗 Floating Point Math (0.30000000000000004.com)](https://0.30000000000000004.com/)
@@ -33,6 +37,15 @@ new Buffer.from(
 Software as a Service
 
 [🔗 The Twelve-Factor App](https://12factor.net/)
+
+## Symbols
+
+- [Book:Typographical symbols](https://en.wikipedia.org/wiki/Book:Typographical_symbols)
+
+## Unicode
+
+- [BabelMap Online](https://www.babelstone.co.uk/Unicode/babelmap.html)
+- [Unicode® Character Table](https://unicode-table.com/)
 
 ## Version
 

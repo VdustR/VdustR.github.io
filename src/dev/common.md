@@ -2,19 +2,19 @@
 
 ## Circular Dependency
 
-[🔗 Circular dependency](https://en.wikipedia.org/wiki/Circular_dependency)
+- [Circular dependency](https://en.wikipedia.org/wiki/Circular_dependency)
 
 ## Emoji
 
-[🔗 Emojipedia](https://emojipedia.org/)
+- [Emojipedia](https://emojipedia.org/)
 
 ## Float Precision
 
-[🔗 Floating Point Math (0.30000000000000004.com)](https://0.30000000000000004.com/)
+- [Floating Point Math (0.30000000000000004.com)](https://0.30000000000000004.com/)
 
 ## License
 
-[🔗 Choose a License](https://choosealicense.com/)
+- [Choose a License](https://choosealicense.com/)
 
 ## Replacement Character �
 
@@ -30,13 +30,13 @@ new Buffer.from(
 // <Buffer ef bf bd ef bf bd ef bf bd>
 ```
 
-[🔗 Specials (Unicode block) | Wikipedia](<https://en.wikipedia.org/wiki/Specials_(Unicode_block)>)
+- [Specials (Unicode block) | Wikipedia](<https://en.wikipedia.org/wiki/Specials_(Unicode_block)>)
 
 ## SaaS
 
 Software as a Service
 
-[🔗 The Twelve-Factor App](https://12factor.net/)
+- [The Twelve-Factor App](https://12factor.net/)
 
 ## Symbols
 
@@ -49,4 +49,5 @@ Software as a Service
 
 ## Version
 
-[🔗 Semantic Versioning](https://semver.org/)
+- [Semver check](https://jubianchi.github.io/semver-check/)
+- [Semantic Versioning](https://semver.org/)

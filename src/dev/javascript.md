@@ -334,5 +334,6 @@ Server should decode both back to **whitespace**.
 
 Solution:
 
+- [qs](https://github.com/ljharb/qs)
 - [query-string](https://github.com/sindresorhus/query-string)
 - [decode-uri-component](https://github.com/SamVerschueren/decode-uri-component)

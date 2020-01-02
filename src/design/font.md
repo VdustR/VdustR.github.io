@@ -17,6 +17,14 @@
 | [PragmataPro](https://www.fsd.it/shop/fonts/pragmatapro/)                    |        |      |
 | [Victor Mono](https://rubjo.github.io/victor-mono/)                          | ✅     | ✅   |
 
+## Tools
+
+### Type Terms
+
+- <https://www.supremo.co.uk/typeterms/>
+
+The animated typographic cheat sheet.
+
 ## Web Fonts
 
 ### Adobe Fonts

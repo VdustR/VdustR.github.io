@@ -12,6 +12,7 @@
 | [Fixedsys Excelsior](https://github.com/kika/fixedsys)                       |        | ✅   |
 | [Hasklig](https://github.com/i-tu/Hasklig)                                   | ✅     | ✅   |
 | [Iosevka](https://typeof.net/Iosevka/)                                       | ✅     | ✅   |
+| [JetBrains Mono](https://www.jetbrains.com/lp/mono/)                         | ✅     | ✅   |
 | [Monoid](https://larsenwork.com/monoid/)                                     |        | ✅   |
 | [Operator Mono](https://www.cufonfonts.com/font/operator-mono)               | ✅     |      |
 | [PragmataPro](https://www.fsd.it/shop/fonts/pragmatapro/)                    |        |      |

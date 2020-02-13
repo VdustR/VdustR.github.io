@@ -12,6 +12,11 @@
 
 - [Emojipedia](https://emojipedia.org/)
 
+Apps for emojis:
+
+- [Rocket(Mac)](https://matthewpalmer.net/rocket/)
+- [WinCompose(Windows)](https://github.com/samhocevar/wincompose)
+
 ## Float Precision
 
 - [Floating Point Math (0.30000000000000004.com)](https://0.30000000000000004.com/)

@@ -25,6 +25,24 @@ Apps for emojis:
 
 - [Choose a License](https://choosealicense.com/)
 
+## Regular Expression
+
+- [i Hate Regex](https://ihateregex.io/)
+
+  > i Hate Regex is a regex cheat sheet that also explains the commonly used expressions so that you understand it. Stop hating and start learning.
+
+- [Regex101](https://regex101.com/)
+
+  > Online regex tester, debugger with highlighting for PHP, PCRE, Python, Golang and JavaScript.
+
+- [RegEx Pal](https://www.regexpal.com/)
+
+  > Test your Javascript and PCRE regular expressions online.
+
+- [RegExr](https://regexr.com/)
+
+  > Regular expression tester with syntax highlighting, PHP / PCRE & JS Support, contextual help, cheat sheet, reference, and searchable community patterns.
+
 ## Replacement Character �
 
 `U+FFFD � REPLACEMENT CHARACTER` used to replace an unknown, unrecognized or unrepresentable character.

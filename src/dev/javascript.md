@@ -294,6 +294,8 @@ Reference:
 
 ## RegExp
 
+- [More about regular expression](./common.md#regular-expression)
+
 ### RegExp.prototype​.test()
 
 > As with `exec()` (or in combination with it), `test()` called multiple times on the same global regular expression instance will advance past the previous match.

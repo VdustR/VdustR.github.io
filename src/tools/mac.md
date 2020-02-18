@@ -24,3 +24,11 @@ xcode-select --install
 ```
 
 reference: <https://github.com/nodejs/node-gyp/issues/1927#issuecomment-546479900>
+
+## Rearrange Launchpad
+
+```sh
+rm ~/Library/Application\ Support/Dock/*.db; defaults write com.apple.dock ResetLaunchPad -bool true; killall Dock;
+```
+
+reference: <https://apple.stackexchange.com/questions/280803/how-to-remove-blank-icon-from-launchpad-after-uninstall-app>

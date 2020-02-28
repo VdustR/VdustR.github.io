@@ -320,6 +320,12 @@ console.log(regex2.test(str1));
 
 🔗 reference: [RegExp.prototype​.test()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test)
 
+## SVG
+
+- [SVGR](https://react-svgr.com/)
+
+  > Transforms SVG into React Components.
+
 ## Whitespace: `encodeURIComponent` vs `URLSearchParams`
 
 - `encodeURIComponent` / `encodeURI` encode **whitespace** into `%20`

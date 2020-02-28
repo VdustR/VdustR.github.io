@@ -57,15 +57,3 @@ Similar services: [Slack](https://slack.com/), [Discord](https://discordapp.com/
 ### [CodiMD](https://github.com/hackmdio/codimd)
 
 CodiMD lets you collaborate in real-time with markdown. Built on HackMD source code, CodiMD lets you host and control your team's content with speed and ease.
-
-Similar services: [HackMD](https://hackmd.io/)
-
-## Online Services
-
-### [Downdetector](https://downdetector.com/)
-
-Realtime overview of issues and outages with all kinds of services. Having issues? We help you find out what is wrong.
-
-### [ShareDrop](https://www.sharedrop.io/)
-
-ShareDrop is a peer-to-peer file sharing app powered by HTML5 WebRTC.

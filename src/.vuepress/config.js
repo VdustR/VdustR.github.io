@@ -44,7 +44,7 @@ module.exports = {
       },
       {
         title: 'Tools',
-        children: ['/tools/', '/tools/mac'],
+        children: ['/tools/', '/tools/mac', '/tools/web'],
       },
     ],
   },

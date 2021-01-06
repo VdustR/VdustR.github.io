@@ -10,7 +10,7 @@ Visual Studio Code is a code editor redefined and optimized for building and deb
 
 A fast and friendly git client for Mac and Windows.
 
-### [fish shell](./fish.md)
+### [fish shell](../sh/fish.md)
 
 fish is a smart and user-friendly command line shell for Linux, macOS, and the rest of the family.
 

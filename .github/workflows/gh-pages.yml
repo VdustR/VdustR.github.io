@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  runs-on: ubuntu-latest
+  container-job:
+    runs-on: ubuntu-latest
 
   steps:
     - name: Checkout

@@ -1,0 +1,40 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+- name: Cache multiple paths
+  uses: actions/cache@v2
+  with:
+    path: |
+      ~/.npm
+      ~/.pnpm-store
+      **/node_modules
+    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+    restore-keys: |
+      ${{ runner.os }}-node-
+    - name: Install Node
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Install pnpm
+      uses: pnpm/action-setup@v1.2.0
+      with:
+        version: 5.14.3
+    - name: Install dependencies
+      run: pnpm install
+    - name: Build
+      run: pnpm run build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist

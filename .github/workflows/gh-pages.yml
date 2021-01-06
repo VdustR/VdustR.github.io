@@ -5,11 +5,6 @@ on:
     branches:
       - dev
 
-defaults:
-  run:
-    shell: bash
-    working-directory: repo
-
 jobs:
   container-job:
     runs-on: ubuntu-latest
@@ -32,7 +27,7 @@ jobs:
         with:
           version: 5.14.3
           run_install: true
-      - name: Install dependencies and build
+      - name: Build
         run: pnpm run build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

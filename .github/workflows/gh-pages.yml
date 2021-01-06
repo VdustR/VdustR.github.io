@@ -11,16 +11,16 @@ jobs:
   steps:
     - name: Checkout
       uses: actions/checkout@v2
-- name: Cache multiple paths
-  uses: actions/cache@v2
-  with:
-    path: |
-      ~/.npm
-      ~/.pnpm-store
-      **/node_modules
-    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-    restore-keys: |
-      ${{ runner.os }}-node-
+    - name: Cache multiple paths
+      uses: actions/cache@v2
+      with:
+        path: |
+          ~/.npm
+          ~/.pnpm-store
+          **/node_modules
+      key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+      restore-keys: |
+        ${{ runner.os }}-node-
     - name: Install Node
       uses: actions/setup-node@v2
       with:

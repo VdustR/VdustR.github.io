@@ -196,7 +196,7 @@ Migrate with [docker-compose](https://github.com/brgmnn/fish-docker-compose):
 fisher add  brgmnn/fish-docker-compose
 ```
 
-## Integrate with [Vistual Studio Code](/tools/vscode)
+## Integrate with [Visual Studio Code](https://code.visualstudio.com/)
 
 Edit [settings.json](https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations):
 
@@ -206,7 +206,7 @@ Edit [settings.json](https://code.visualstudio.com/docs/getstarted/settings#_set
 }
 ```
 
-## Integrate with [Hyper.js](/tools/hyper)
+## Integrate with [Hyper.js](https://hyper.is/)
 
 Edit `~/.hyper.js`:
 

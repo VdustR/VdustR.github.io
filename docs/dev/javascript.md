@@ -70,7 +70,7 @@ Solutions:
 
 🔗 reference: [big.js vs. bignumber.js vs. decimal.js? #45](https://github.com/MikeMcl/big.js/issues/45#issuecomment-104211175)
 
-More info: [Float Precision](/dev/common.html#float-precision).
+More info: [Float Precision](dev/common.md#float-precision).
 
 ## Interesting Encodes
 

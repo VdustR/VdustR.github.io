@@ -1,5 +1,4 @@
 !.*
-/dist
 
 .vscode/*
 !.vscode/settings.json
@@ -155,3 +154,10 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+
+# Production
+/build
+
+# Generated files
+.docusaurus
+.cache-loader

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>ViPro Land Blog</title>
+        <link>https://vdustr.github.io/blog</link>
+        <description>ViPro Land Blog</description>
+        <lastBuildDate>Thu, 01 Apr 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Migrate to Docusaurus v2]]></title>
+            <link>https://vdustr.github.io/blog/2021/04/01/move-to-docusaurus</link>
+            <guid>Migrate to Docusaurus v2</guid>
+            <pubDate>Thu, 01 Apr 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[This is my first post on Docusaurus 2.]]></description>
+        </item>
+    </channel>
+</rss>

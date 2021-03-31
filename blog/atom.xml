@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://vdustr.github.io/blog</id>
+    <title>ViPro Land Blog</title>
+    <updated>2021-04-01T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://vdustr.github.io/blog"/>
+    <subtitle>ViPro Land Blog</subtitle>
+    <icon>https://vdustr.github.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Migrate to Docusaurus v2]]></title>
+        <id>Migrate to Docusaurus v2</id>
+        <link href="https://vdustr.github.io/blog/2021/04/01/move-to-docusaurus"/>
+        <updated>2021-04-01T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is my first post on Docusaurus 2.]]></summary>
+    </entry>
+</feed>

@@ -7,18 +7,52 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: rgb(33, 175, 144);
-  --ifm-color-primary-darker: rgb(31, 165, 136);
-  --ifm-color-primary-darkest: rgb(26, 136, 112);
-  --ifm-color-primary-light: rgb(70, 203, 174);
-  --ifm-color-primary-lighter: rgb(102, 212, 189);
-  --ifm-color-primary-lightest: rgb(146, 224, 208);
+  --ifm-color-primary: #c92bb9;
+  --ifm-color-primary-dark: #bb22ac;
+  --ifm-color-primary-darker: #a7139a;
+  --ifm-color-primary-darkest: #940088;
+  --ifm-color-primary-light: #d63bc6;
+  --ifm-color-primary-lighter: #ea51d9;
+  --ifm-color-primary-lightest: #ff65ec;
   --ifm-code-font-size: 95%;
   --ifm-font-family-monospace: 'Recursive', 'Shippori Mincho',
     source-han-sans-cjk-tc, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
+  --ifm-navbar-background-color: #d5b7b7;
+}
+
+html[data-theme='dark'] {
+  --ifm-navbar-background-color: #332e2d;
+}
+
+html:before {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background-image: linear-gradient(
+    to left top,
+    #d5b7b7,
+    #dac0c0,
+    #dfc9c9,
+    #e4d3d3,
+    #e9dcdc
+  );
+}
+
+html[data-theme='dark']:before {
+  background-image: linear-gradient(
+    to left top,
+    #20271f,
+    #272820,
+    #2d2a24,
+    #312c28,
+    #332e2d
+  );
 }
 
 .docusaurus-highlight-code-line {

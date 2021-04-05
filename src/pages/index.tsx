@@ -1,10 +1,41 @@
-import React from 'react';
-import clsx from 'clsx';
-import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import styles from './styles.module.css';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import { css, cx } from '@emotion/css';
+import Layout from '@theme/Layout';
+import React from 'react';
+
+const cssHeroBanner = css`
+  label: HeroBanner;
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  @media screen and (max-width: 966px) {
+    padding: 2rem;
+  }
+`;
+
+const cssButtons = css`
+  label: Buttons;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const cssFeatures = css`
+  label: Features;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+`;
+
+const cssFeatureImage = css`
+  label: FeatureImage;
+  height: 200px;
+  width: 200px;
+`;
 
 const features = [
   {
@@ -39,13 +70,13 @@ const features = [
   },
 ];
 
-function Feature({imageUrl, title, description}) {
+function Feature({ imageUrl, title, description }) {
   const imgUrl = useBaseUrl(imageUrl);
   return (
-    <div className={clsx('col col--4', styles.feature)}>
+    <div className="col col--4">
       {imgUrl && (
         <div className="text--center">
-          <img className={styles.featureImage} src={imgUrl} alt={title} />
+          <img className={cssFeatureImage} src={imgUrl} alt={title} />
         </div>
       )}
       <h3>{title}</h3>
@@ -56,22 +87,18 @@ function Feature({imageUrl, title, description}) {
 
 function Home() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
+  const { siteConfig = {} } = context;
   return (
-    <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
-      <header className={clsx('hero hero--primary', styles.heroBanner)}>
+    <Layout title={`Hello, World!`} description="𝓕𝓪𝓷𝓬𝔂 𝓭𝓮𝓼𝓲𝓰𝓷. 𝚂𝚒𝚖𝚙𝚕𝚎 𝚕𝚒𝚏𝚎.">
+      <header className={cx('hero hero--primary', cssHeroBanner)}>
         <div className="container">
           <h1 className="hero__title">{siteConfig.title}</h1>
           <p className="hero__subtitle">{siteConfig.tagline}</p>
-          <div className={styles.buttons}>
+          <div className={cssButtons}>
             <Link
-              className={clsx(
-                'button button--outline button--secondary button--lg',
-                styles.getStarted,
-              )}
-              to={useBaseUrl('docs/')}>
+              className="button button--outline button--secondary button--lg"
+              to={useBaseUrl('docs/')}
+            >
               Get Started
             </Link>
           </div>
@@ -79,7 +106,7 @@ function Home() {
       </header>
       <main>
         {features && features.length > 0 && (
-          <section className={styles.features}>
+          <section className={cssFeatures}>
             <div className="container">
               <div className="row">
                 {features.map((props, idx) => (

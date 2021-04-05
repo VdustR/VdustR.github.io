@@ -1,5 +1,5 @@
-import React, { memo, ReactNode, useMemo } from 'react';
 import { css, cx } from '@emotion/css';
+import React, { memo, useMemo } from 'react';
 
 export type BadgeProps = {
   text: string;

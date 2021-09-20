@@ -1,4 +1,14 @@
 {
+  "cSpell.ignorePaths": [
+    "package-lock.json",
+    "node_modules",
+    "vscode-extension",
+    ".git/objects",
+    ".vscode",
+    ".vscode-insiders",
+    "pnpm-lock.yaml"
+  ],
+  "cSpell.words": ["Podman", "venv"],
   "editor.autoIndent": "full",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,

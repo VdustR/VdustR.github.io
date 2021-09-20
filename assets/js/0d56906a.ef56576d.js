@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[9],{73:function(o){o.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Podman in WSL2","permalink":"/blog/2021/09/20/podman-in-wsl2"},{"title":"Migrate to Docusaurus v2","permalink":"/blog/2021/04/01/move-to-docusaurus"}]}')}}]);

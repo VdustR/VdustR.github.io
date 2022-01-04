@@ -1,14 +1,12 @@
 ---
-title: Podman in WSL2
 author: ViPro
-author_title: A web developer just came back to Windows
-author_url: https://github.com/VdustR
-author_image_url: https://avatars.githubusercontent.com/u/29639463
 tags: [podman, podman-compose, container, wsl2, windows, fish]
 description: 3 分鐘 跟 podman 當好朋友
 image: https://i.imgur.com/TccPXfi.png
 hide_table_of_contents: false
 ---
+
+# Podman in WSL2
 
 3 分鐘 跟 podman 當好朋友
 

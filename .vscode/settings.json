@@ -8,7 +8,22 @@
     ".vscode-insiders",
     "pnpm-lock.yaml"
   ],
-  "cSpell.words": ["Podman", "venv"],
+  "cSpell.words": [
+    "browserslist",
+    "codegen",
+    "fastify",
+    "mdsvex",
+    "nodejieba",
+    "pnpm",
+    "podman",
+    "shiki",
+    "shikijs",
+    "sveltejs",
+    "vdustr",
+    "venv",
+    "vite",
+    "vitejs"
+  ],
   "editor.autoIndent": "full",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,

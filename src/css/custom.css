@@ -73,6 +73,7 @@ html[data-theme='dark']:before {
 
 body {
   font-family: var(--ifm-font-family-monospace);
+  --ifm-heading-font-family: var(--ifm-font-family-monospace);
   font-variation-settings: 'MONO' var(--cm-mono), 'CASL' var(--cm-casl),
     'wght' var(--cm-wght), 'slnt' var(--cm-slnt), 'CRSV' var(--cm-crsv);
   --cm-wght: 400;

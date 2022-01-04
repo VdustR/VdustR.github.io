@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[9518],{4770:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/workspace","name":"workspace","count":1,"permalink":"/blog/tags/workspace"}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[8896],{3674:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/pnpm","name":"pnpm","count":2,"permalink":"/blog/tags/pnpm"}')}}]);

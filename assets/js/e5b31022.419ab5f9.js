@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[40],{107:function(o){o.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"podman-compose","name":"podman-compose","count":1,"permalink":"/blog/tags/podman-compose"}')}}]);

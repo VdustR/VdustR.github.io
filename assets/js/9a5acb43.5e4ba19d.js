@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[4304],{1384:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/bookmarks","name":"bookmarks","count":1,"permalink":"/blog/tags/bookmarks"}')}}]);

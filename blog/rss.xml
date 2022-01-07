@@ -4,9 +4,17 @@
         <title>ViPro Land Blog</title>
         <link>https://vdustr.github.io/blog</link>
         <description>ViPro Land Blog</description>
-        <lastBuildDate>Tue, 04 Jan 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 08 Jan 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Pocket]]></title>
+            <link>https://vdustr.github.io/blog/2022/01/08/pocket</link>
+            <guid>/2022/01/08/pocket</guid>
+            <pubDate>Sat, 08 Jan 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[👀 Stay awhile and listen..]]></description>
+            <content:encoded><![CDATA[<a href="https://vdustr.github.io/pocket" target="blank" rel="noopener noreferrer"><img src="https://vdustr.github.io/asset-2022/01-08-pocket/og.png" alt="pocket" style="max-width:100%"/></a><p>最近開始嘗試用 <a href="https://svelte.dev/">Svelte</a> 寫一些東西, 做了這個頁面, 主要是放一些 🔖 書籤和 <a href="https://github.com/VdustR?tab=stars">自己 ⭐ 的 Repositories</a> ， 方便搜尋用。</p><p>書籤的部分會陸續整理補上。</p><p>👉 <a href="https://vdustr.github.io/pocket">https://vdustr.github.io/pocket</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[A TypeScript Fullstack GraphQL CodeGen Example]]></title>
             <link>https://vdustr.github.io/blog/2022/01/04/example-graphql-fullstack-codegen</link>

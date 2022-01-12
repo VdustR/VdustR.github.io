@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[8933],{1961:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/sveltejs","name":"sveltejs","count":1,"permalink":"/blog/tags/sveltejs"}')}}]);

@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[5437],{6325:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/vscode","name":"vscode","count":2,"permalink":"/blog/tags/vscode"}')}}]);

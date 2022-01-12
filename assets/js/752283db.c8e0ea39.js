@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[6947],{363:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/plugin","name":"plugin","count":1,"permalink":"/blog/tags/plugin"}')}}]);

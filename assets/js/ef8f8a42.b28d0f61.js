@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[4069],{9673:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/axios","name":"axios","count":1,"permalink":"/blog/tags/axios"}')}}]);

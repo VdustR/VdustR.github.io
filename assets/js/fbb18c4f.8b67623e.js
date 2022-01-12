@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[7297],{9276:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/shiki","name":"shiki","count":1,"permalink":"/blog/tags/shiki"}')}}]);

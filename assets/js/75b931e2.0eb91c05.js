@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[5172],{2844:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/apollo-server","name":"apollo-server","count":1,"permalink":"/blog/tags/apollo-server"}')}}]);

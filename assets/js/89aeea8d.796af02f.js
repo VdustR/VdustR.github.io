@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[9779],{5644:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/fastify","name":"fastify","count":1,"permalink":"/blog/tags/fastify"}')}}]);

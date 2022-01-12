@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkVdustR=self.webpackChunkVdustR||[]).push([[9769],{6929:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/vitejs","name":"vitejs","count":1,"permalink":"/blog/tags/vitejs"}')}}]);

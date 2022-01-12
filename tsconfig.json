@@ -7,13 +7,6 @@
   ],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin",
-        "lint": {
-          "validProperties": ["label"]
-        }
-      }
-    ]
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }

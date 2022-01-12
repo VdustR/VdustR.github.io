@@ -1,0 +1,15 @@
+.section {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  --margin-x: 1em;
+  --margin-y: 2em;
+  gap: 1em;
+  margin-top: var(--margin-y);
+  margin-right: var(--margin-x);
+  margin-bottom: var(--margin-y);
+  margin-left: var(--margin-x);
+  justify-content: center;
+  align-items: center;
+}

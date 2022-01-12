@@ -1,0 +1,29 @@
+.badge {
+  display: inline-block;
+  font-size: 14px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 3px;
+  padding: 0 6px;
+  color: #fff;
+}
+
+.badge + .badge {
+  margin-left: 5px;
+}
+
+.top {
+  vertical-align: top;
+}
+
+.tip {
+  background-color: #42b983;
+}
+
+.warning {
+  background-color: #e7c000;
+}
+
+.error {
+  background-color: #da5961;
+}

@@ -4,7 +4,7 @@ import React from 'react';
 import style from './style.module.css';
 
 const links: Record<string, string> = {
-  Blog: '/blog',
+  Blog: '//vdustr.github.io/blog/',
   Repositories:
     '//github.com/VdustR?tab=repositories&q=archived%3Afalse+fork%3Afalse',
   Pocket: '//vdustr.github.io/pocket',

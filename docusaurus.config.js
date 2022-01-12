@@ -1,3 +1,54 @@
+/** @type {import('@docusaurus/preset-classic').ThemeConfig["footer"]["links"]} */
+const links = [
+  {
+    title: 'Links',
+    items: [
+      {
+        label: 'Blog',
+        href: '//vdustr.github.io/blog/',
+      },
+      {
+        label: 'GitHub',
+        href: '//github.com/VdustR',
+      },
+      {
+        label: 'Repositories',
+        href: '//github.com/VdustR?tab=repositories&q=archived%3Afalse+fork%3Afalse',
+      },
+      {
+        label: 'Pocket',
+        href: '//vdustr.github.io/pocket',
+      },
+    ],
+  },
+  {
+    title: 'Community',
+    items: [
+      {
+        label: 'Facebook',
+        href: '//fb.me/vdustr',
+      },
+      {
+        label: 'Discord',
+        href: '//ganhuaking.tw',
+      },
+    ],
+  },
+];
+
+/** @type {import('@docusaurus/preset-classic').ThemeConfig["navbar"]["items"]} */
+const navbarItems = [];
+
+links.forEach(({ items }) => {
+  items.forEach(({ label, href }) => {
+    navbarItems.push({
+      label,
+      href,
+      position: 'right',
+    });
+  });
+});
+
 /** @type import('@docusaurus/types').DocusaurusConfig */
 module.exports = {
   title: 'ViPro Land',
@@ -9,75 +60,34 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'VdustR', // Usually your GitHub org/user name.
   projectName: 'vdustr.github.io', // Usually your repo name.
-  themeConfig: {
-    navbar: {
-      title: 'ViPro Land',
-      logo: {
-        alt: 'ViPro Land',
-        src: 'img/logo.svg',
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
       },
-      items: [
-        {
-          to: 'docs',
-          activeBasePath: 'docs',
-          label: 'Note',
-          position: 'left',
+      navbar: {
+        title: 'ViPro Land',
+        logo: {
+          alt: 'ViPro Land',
+          src: 'img/logo.svg',
         },
-        { to: 'blog', label: 'Blog', position: 'left' },
-        {
-          href: 'https://fb.me/VdustR',
-          label: 'Facebook',
-          position: 'right',
-        },
-        {
-          href: 'https://github.com/VdustR',
-          label: 'GitHub',
-          position: 'right',
-        },
-      ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Docs',
-          items: [
-            {
-              label: 'Note',
-              to: 'docs/',
-            },
-          ],
-        },
-        {
-          title: 'Community',
-          items: [
-            {
-              label: 'Facebook',
-              href: 'https://fb.me/VdustR',
-            },
-            {
-              label: 'Discord',
-              href: 'https://ganhuaking.tw',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'Blog',
-              to: 'blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/VdustR',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © 2017-${new Date().getFullYear()} ViPro Land, Inc. Built with Docusaurus.`,
-    },
-  },
+        items: [
+          {
+            label: 'Docs',
+            href: '/docs',
+          },
+          ...navbarItems,
+        ],
+      },
+      footer: {
+        style: 'dark',
+        links,
+        copyright: `Copyright © 2017-${new Date().getFullYear()} ViPro Land, Inc. Built with Docusaurus.`,
+      },
+    }),
   presets: [
     [
       '@docusaurus/preset-classic',
@@ -85,9 +95,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
         },
-        blog: {
-          showReadingTime: true,
-        },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -101,5 +109,22 @@ module.exports = {
         languages: ['zh'],
       },
     ],
+  ],
+  stylesheets: [
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.googleapis.com',
+    },
+    {
+      rel: 'preconnect',
+      href: 'https://fonts.gstatic.com',
+      crossorigin: true,
+    },
+    {
+      href: 'https://fonts.googleapis.com/css?family=Noto+Sans+TC:400,700&display=swap&subset=chinese-traditional',
+    },
+    {
+      href: 'https://cdn.jsdelivr.net/npm/victormono@latest/dist/index.min.css',
+    },
   ],
 };

@@ -1,3 +1,5 @@
+const title = 'ViPro Land';
+
 /** @type {import('@docusaurus/preset-classic').ThemeConfig["footer"]["links"]} */
 const links = [
   {
@@ -52,27 +54,26 @@ links.forEach(({ items }) => {
 /** @type import('@docusaurus/types').DocusaurusConfig */
 module.exports = {
   title: 'ViPro Land',
-  tagline: '𝓕𝓪𝓷𝓬𝔂 𝓭𝓮𝓼𝓲𝓰𝓷. 𝚂𝚒𝚖𝚙𝚕𝚎 𝚕𝚒𝚏𝚎.',
+  tagline: "It's me ViPro",
   url: 'https://vdustr.github.io/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'VdustR', // Usually your GitHub org/user name.
-  projectName: 'vdustr.github.io', // Usually your repo name.
+  favicon: 'https://vdustr.github.io/brand/2022-01/favicon.ico',
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      image: 'https://vdustr.github.io/brand/2022-01/ogimage.png',
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
       navbar: {
-        title: 'ViPro Land',
+        title,
         logo: {
-          alt: 'ViPro Land',
-          src: 'img/logo.svg',
+          alt: title,
+          src: 'https://vdustr.github.io/brand/2022-01/logo.svg',
         },
         items: [
           {
@@ -81,10 +82,17 @@ module.exports = {
           },
           ...navbarItems,
         ],
+        hideOnScroll: true,
       },
       footer: {
         style: 'dark',
         links,
+        logo: {
+          alt: title,
+          src: 'https://vdustr.github.io/brand/2022-01/logo.svg',
+          height: 32,
+          width: 32,
+        },
         copyright: `Copyright © 2017-${new Date().getFullYear()} ViPro Land, Inc. Built with Docusaurus.`,
       },
     }),

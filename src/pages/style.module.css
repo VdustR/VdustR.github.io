@@ -1,13 +1,25 @@
+.container {
+  --px: 3rem;
+  --py: 2rem;
+  padding-top: var(--py);
+  padding-right: var(--px);
+  padding-bottom: var(--py);
+  padding-left: var(--px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em;
+}
+
 .section {
   display: flex;
   flex-wrap: wrap;
-  --margin-x: 1em;
-  --margin-y: 2em;
   gap: 1em;
-  margin-top: var(--margin-y);
-  margin-right: var(--margin-x);
-  margin-bottom: var(--margin-y);
-  margin-left: var(--margin-x);
   justify-content: center;
   align-items: center;
+}
+
+.cover {
+  max-width: 300px;
+  width: 100%;
 }

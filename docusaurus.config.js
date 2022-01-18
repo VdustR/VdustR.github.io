@@ -55,7 +55,7 @@ links.forEach(({ items }) => {
 module.exports = {
   title: 'ViPro Land',
   tagline: "It's me ViPro",
-  url: 'https://vdustr.github.io/',
+  url: 'https://vdustr.github.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

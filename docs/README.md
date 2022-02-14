@@ -51,7 +51,7 @@ Material Design for Vue.js.
 - [🔗 Facebook](https://www.facebook.com/jtfoundry/)
 - [🔗 GitHub](https://github.com/VdustR/taipei-sans-tc)
 - [🔗 npm](https://www.npmjs.com/package/taipei-sans-tc)
-- [🔗 Demo Page](https://vdustr.github.io/taipei-sans-tc/)
+- [🔗 Demo Page](https://vdustr.dev/taipei-sans-tc/)
 
 ### docker-woff2
 
@@ -74,7 +74,7 @@ Chrome and Firefox are supported for now.
 
 A promise extension for over duration, timeout, and expiration.
 
-- [🔗 Official Site](https://vdustr.github.io/promise-over/)
+- [🔗 Official Site](https://vdustr.dev/promise-over/)
 - [🔗 GitHub](https://github.com/VdustR/promise-over)
 - [🔗 npm](https://www.npmjs.com/package/promise-over)
 

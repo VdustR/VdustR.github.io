@@ -5,10 +5,10 @@ import React from 'react';
 import style from './style.module.css';
 
 const links: Record<string, string> = {
-  Blog: '//vdustr.github.io/blog/',
+  Blog: '//vdustr.dev/blog/',
   Repositories:
     '//github.com/VdustR?tab=repositories&q=archived%3Afalse+fork%3Afalse',
-  Pocket: '//vdustr.github.io/pocket',
+  Pocket: '//vdustr.dev/pocket',
   Facebook: '//fb.me/vdustr',
   Discord: '//ganhuaking.tw',
 };
@@ -21,7 +21,7 @@ export default function Home() {
         <img
           className={style.cover}
           alt={siteConfig.title}
-          src="https://vdustr.github.io/brand/2022-01/round.svg"
+          src="https://vdustr.dev/brand/2022-01/round.svg"
         />
         <section className={style.section}>
           {Object.entries(links).map(([name, href], i) => (

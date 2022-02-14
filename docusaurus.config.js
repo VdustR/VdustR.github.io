@@ -7,7 +7,7 @@ const links = [
     items: [
       {
         label: 'Blog',
-        href: '//vdustr.github.io/blog/',
+        href: '//vdustr.dev/blog/',
       },
       {
         label: 'GitHub',
@@ -19,7 +19,7 @@ const links = [
       },
       {
         label: 'Pocket',
-        href: '//vdustr.github.io/pocket',
+        href: '//vdustr.dev/pocket',
       },
     ],
   },
@@ -55,15 +55,15 @@ links.forEach(({ items }) => {
 module.exports = {
   title: 'ViPro Land',
   tagline: "It's me ViPro",
-  url: 'https://vdustr.github.io',
+  url: 'https://vdustr.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'https://vdustr.github.io/brand/2022-01/favicon.ico',
+  favicon: 'https://vdustr.dev/brand/2022-01/favicon.ico',
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'https://vdustr.github.io/brand/2022-01/ogimage.png',
+      image: 'https://vdustr.dev/brand/2022-01/ogimage.png',
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true,
@@ -73,7 +73,7 @@ module.exports = {
         title,
         logo: {
           alt: title,
-          src: 'https://vdustr.github.io/brand/2022-01/logo.svg',
+          src: 'https://vdustr.dev/brand/2022-01/logo.svg',
         },
         items: [
           {
@@ -89,7 +89,7 @@ module.exports = {
         links,
         logo: {
           alt: title,
-          src: 'https://vdustr.github.io/brand/2022-01/logo.svg',
+          src: 'https://vdustr.dev/brand/2022-01/logo.svg',
           height: 32,
           width: 32,
         },

@@ -1,15 +1,10 @@
 ---
-title: About Me
-description: About me, ViPro.
-hide_table_of_contents: true
-slug: /
+description: Made by ViPro with 💓.
 ---
 
-import Badge from '@site/src/components/Badge'
+# Projects
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style={{borderWidth:0}} src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>
-
-> Fancy design. Simple Life.
+Made by ViPro with 💓.
 
 ## Repositories
 

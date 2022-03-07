@@ -4,6 +4,7 @@ specifiers:
   '@docusaurus/core': ^2.0.0-beta.17
   '@docusaurus/module-type-aliases': ^2.0.0-beta.17
   '@docusaurus/preset-classic': ^2.0.0-beta.17
+  '@docusaurus/theme-classic': ^2.0.0-beta.17
   '@mdx-js/react': ^1.6.22
   '@tsconfig/docusaurus': ^1.0.4
   '@types/react': ^17.0.39
@@ -15,6 +16,7 @@ specifiers:
   lunr: ^2.3.9
   lunr-languages: ^1.9.0
   nodejieba: ^2.6.0
+  phosphor-react: ^1.4.1
   prettier: ^2.5.1
   pretty-quick: ^3.1.3
   react: ^17.0.2
@@ -25,12 +27,14 @@ specifiers:
 dependencies:
   '@docusaurus/core': 2.0.0-beta.17_aeaba09eb00f7665e5acdd7c57ed6790
   '@docusaurus/preset-classic': 2.0.0-beta.17_bc7d21a0df28462a9ab9ba30599580b4
+  '@docusaurus/theme-classic': 2.0.0-beta.17_aeaba09eb00f7665e5acdd7c57ed6790
   '@mdx-js/react': 1.6.22_react@17.0.2
   clsx: 1.1.1
   docusaurus-lunr-search: 2.1.15_519149ffb3023e44b8c82ef4da1527e1
   lunr: 2.3.9
   lunr-languages: 1.9.0
   nodejieba: 2.6.0
+  phosphor-react: 1.4.1_react@17.0.2
   react: 17.0.2
   react-dom: 17.0.2_react@17.0.2
 
@@ -8677,6 +8681,18 @@ packages:
         integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==,
       }
     engines: { node: '>=8' }
+    dev: false
+
+  /phosphor-react/1.4.1_react@17.0.2:
+    resolution:
+      {
+        integrity: sha512-gO5j7U0xZrdglTAYDYPACU4xDOFBTJmptrrB/GeR+tHhCZF3nUMyGmV/0hnloKjuTrOmpSFlbfOY78H39rgjUQ==,
+      }
+    engines: { node: '>=10' }
+    peerDependencies:
+      react: '>=16'
+    dependencies:
+      react: 17.0.2
     dev: false
 
   /picocolors/1.0.0:

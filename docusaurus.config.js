@@ -1,55 +1,5 @@
 const title = 'ViPro Land';
-
-/** @type {import('@docusaurus/preset-classic').ThemeConfig["footer"]["links"]} */
-const links = [
-  {
-    title: 'Links',
-    items: [
-      {
-        label: 'Blog',
-        href: '//vdustr.dev/blog/',
-      },
-      {
-        label: 'GitHub',
-        href: '//github.com/VdustR',
-      },
-      {
-        label: 'Repositories',
-        href: '//github.com/VdustR?tab=repositories&q=archived%3Afalse+fork%3Afalse',
-      },
-      {
-        label: 'Pocket',
-        href: '//vdustr.dev/pocket',
-      },
-    ],
-  },
-  {
-    title: 'Community',
-    items: [
-      {
-        label: 'Facebook',
-        href: '//fb.me/vdustr',
-      },
-      {
-        label: 'Discord',
-        href: '//ganhuaking.tw',
-      },
-    ],
-  },
-];
-
-/** @type {import('@docusaurus/preset-classic').ThemeConfig["navbar"]["items"]} */
-const navbarItems = [];
-
-links.forEach(({ items }) => {
-  items.forEach(({ label, href }) => {
-    navbarItems.push({
-      label,
-      href,
-      position: 'right',
-    });
-  });
-});
+const notesUrl = '/docs/bin/7z';
 
 /** @type import('@docusaurus/types').DocusaurusConfig */
 module.exports = {
@@ -75,18 +25,72 @@ module.exports = {
           alt: title,
           src: 'https://vdustr.dev/brand/2022-01/logo.svg',
         },
-        items: [
-          {
-            label: 'Docs',
-            href: '/docs',
-          },
-          ...navbarItems,
-        ],
+        items:
+          /** @type {import('@docusaurus/preset-classic').ThemeConfig["navbar"]["items"]} */
+          [
+            {
+              label: 'Links',
+              href: '/links',
+            },
+            {
+              label: 'Projects',
+              href: '/projects',
+            },
+            {
+              label: 'Notes',
+              href: notesUrl,
+            },
+          ],
         hideOnScroll: true,
       },
       footer: {
         style: 'dark',
-        links,
+        links:
+          /** @type {import('@docusaurus/preset-classic').ThemeConfig["footer"]["links"]} */
+          [
+            {
+              title: 'Links',
+              items: [
+                {
+                  label: 'About Me',
+                  href: '/',
+                },
+                {
+                  label: 'Notes',
+                  href: notesUrl,
+                },
+                {
+                  label: 'Blog',
+                  href: '//vdustr.dev/blog/',
+                },
+                {
+                  label: 'Github',
+                  href: '//gh.vdustr.dev',
+                },
+                {
+                  label: '...more',
+                  href: '/links',
+                },
+              ],
+            },
+            {
+              title: 'Community',
+              items: [
+                {
+                  label: 'Discord',
+                  href: '//ganhuaking.tw',
+                },
+                {
+                  label: 'Facebook',
+                  href: '//fb.vdustr.dev',
+                },
+                {
+                  label: 'Twitter',
+                  href: '//t.vdustr.dev',
+                },
+              ],
+            },
+          ],
         logo: {
           alt: title,
           src: 'https://vdustr.dev/brand/2022-01/logo.svg',
@@ -133,6 +137,9 @@ module.exports = {
     },
     {
       href: 'https://cdn.jsdelivr.net/npm/victormono@latest/dist/index.min.css',
+    },
+    {
+      href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
     },
   ],
 };

@@ -7,6 +7,7 @@ module.exports = {
   tagline: "It's me ViPro",
   url: 'https://vdustr.dev',
   baseUrl: '/',
+  trailingSlash: true,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'https://vdustr.dev/brand/2022-01/favicon.ico',

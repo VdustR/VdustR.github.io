@@ -42,3 +42,13 @@ Husky([workaround](https://github.com/Schniz/fnm/issues/428#issuecomment-8194399
 export PATH="$HOME"/.fnm:"$PATH"
 eval "$(fnm env --log-level=quiet | sed -e 's/PATH="\(.*\)":\$PATH/PATH="\1:$PATH"/g')"
 ```
+
+Upgrade:
+
+```bash
+# Mac OS:
+brew upgrade fnm
+
+# Others:
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+```

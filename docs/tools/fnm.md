@@ -38,7 +38,7 @@ fnm completions --shell fish >> ~/.config/fish/conf.d/fnm.fish
 
 Husky([workaround](https://github.com/Schniz/fnm/issues/428#issuecomment-819439988)):
 
-```bash
+```bash title="~/.huskyrc"
 export PATH="$HOME"/.fnm:"$PATH"
 eval "$(fnm env --log-level=quiet | sed -e 's/PATH="\(.*\)":\$PATH/PATH="\1:$PATH"/g')"
 ```

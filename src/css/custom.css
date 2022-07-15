@@ -17,6 +17,10 @@
     monospace;
 }
 
+body {
+  font-feature-settings: 'ss03', 'ss06', 'ss07';
+}
+
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;

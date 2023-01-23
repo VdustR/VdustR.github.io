@@ -22,7 +22,6 @@ My links.
 ## My Links
 
 - [<Article size="2em" /> Blog](https://vdustr.dev/blog)
-- [<Bookmark size="2em" /> Raindrop](https://rd.vdustr.dev)
 - [<CodepenLogo size="2em" /> Codepen](https://codepen.io/VdustR)
 - [<CodesandboxLogo size="2em" /> CodeSandbox](https://codesandbox.io/u/VdustR)
 - [<DiscordLogo size="2em" /> Discord](https://dc.vdustr.dev)

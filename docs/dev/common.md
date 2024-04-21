@@ -53,6 +53,10 @@ Apps for emojis:
 
   > Regular expression tester with syntax highlighting, PHP / PCRE & JS Support, contextual help, cheat sheet, reference, and searchable community patterns.
 
+- [Cyrilex](https://extendsclass.com/regex-tester.html)
+
+  > Online visual regex tester with syntax highlighting for PHP, Python, Ruby, Java, JavaScript and MySQL.
+
 ## Replacement Character �
 
 `U+FFFD � REPLACEMENT CHARACTER` used to replace an unknown, unrecognized or unrepresentable character.

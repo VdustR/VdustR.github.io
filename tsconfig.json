@@ -1,12 +1,7 @@
 {
-  "extends": "@tsconfig/docusaurus/tsconfig.json",
-  "include": [
-    "docusaurus.config.js",
-    "src/",
-    "@docusaurus/module-type-aliases"
-  ],
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "jsx": "react-jsx",
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "noUncheckedIndexedAccess": true,
+    "types": ["astro/client"]
   }
 }

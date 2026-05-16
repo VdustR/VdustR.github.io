@@ -1,0 +1,106 @@
+---
+import { profile } from "../data/profile";
+import "../styles/global.css";
+
+const pageTitle = `${profile.name} (@${profile.handle})`;
+const pageDescription = profile.intro;
+const ogImage = new URL("/og.png", profile.site).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={pageDescription} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f1e8" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={profile.site} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={`${pageTitle}: ${pageDescription}`} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="canonical" href={profile.site} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <title>{pageTitle}</title>
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Person",
+        name: profile.name,
+        alternateName: profile.handle,
+        description: profile.intro,
+        image: profile.avatar,
+        url: profile.site,
+        sameAs: profile.links.map((link) => link.href),
+      })}
+    />
+  </head>
+  <body>
+    <div class="ambient-field" aria-hidden="true">
+      <span class="ambient-node ambient-node-a"></span>
+      <span class="ambient-node ambient-node-b"></span>
+      <span class="ambient-node ambient-node-c"></span>
+      <span class="ambient-plane ambient-plane-a"></span>
+      <span class="ambient-plane ambient-plane-b"></span>
+    </div>
+
+    <main class="page-shell" aria-labelledby="identity-title">
+      <article class="profile-card" aria-label={`${profile.name} profile`}>
+        <div class="identity">
+          <p class="handle">@{profile.handle}</p>
+          <h1 id="identity-title">{profile.name}</h1>
+          <p class="intro">{profile.intro}</p>
+        </div>
+
+        <div class="profile-visual">
+          <div class="signal-field" aria-hidden="true">
+            <span class="plane plane-a"></span>
+            <span class="plane plane-b"></span>
+            <span class="plane plane-c"></span>
+            <span class="node node-a"></span>
+            <span class="node node-b"></span>
+            <span class="node node-c"></span>
+          </div>
+
+          <figure class="avatar-frame">
+            <img
+              src={profile.avatar}
+              width="256"
+              height="256"
+              alt={`${profile.handle} avatar`}
+              decoding="async"
+              fetchpriority="high"
+            />
+          </figure>
+        </div>
+
+        <nav class="social-links" aria-label="Social links">
+          {
+            profile.links.map((link) => (
+              <a href={link.href} rel="me noopener noreferrer" target="_blank">
+                <span>{link.label}</span>
+                <small>{link.detail}</small>
+              </a>
+            ))
+          }
+        </nav>
+
+        <footer class="profile-footer">
+          <p>Copyright 2026 {profile.handle}.</p>
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>

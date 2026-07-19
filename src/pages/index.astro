@@ -196,12 +196,19 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
         stage instanceof HTMLElement &&
         portrait instanceof HTMLImageElement
       ) {
-        const gl = canvas.getContext("webgl2", {
-          alpha: false,
-          antialias: false,
-          depth: false,
-          powerPreference: "low-power",
-        });
+        const gl = (() => {
+          try {
+            return canvas.getContext("webgl2", {
+              alpha: false,
+              antialias: false,
+              depth: false,
+              powerPreference: "low-power",
+            });
+          } catch (error) {
+            console.error("WebGL2 context creation failed:", error);
+            return null;
+          }
+        })();
 
         let cleanupPortrait: (() => void) | undefined;
 
@@ -480,7 +487,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                   if (!textureReady) return;
                   const deltaSeconds =
                     previousMilliseconds !== null
-                      ? Math.min((milliseconds - previousMilliseconds) / 1000, 0.05)
+                      ? Math.max(0, Math.min((milliseconds - previousMilliseconds) / 1000, 0.05))
                       : 0;
                   previousMilliseconds = milliseconds;
                   pointer.x += (targetPointer.x - pointer.x) * 0.055;

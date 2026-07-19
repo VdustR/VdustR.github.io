@@ -447,7 +447,6 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 
               const draw = (milliseconds: number) => {
                 if (!textureReady) return;
-                resize();
                 const deltaSeconds = previousMilliseconds
                   ? Math.min((milliseconds - previousMilliseconds) / 1000, 0.05)
                   : 0;
@@ -492,6 +491,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                   gl.uniform1i(imageUniform, 0);
                   gl.uniform2f(imageSize, portrait.naturalWidth, portrait.naturalHeight);
 
+                  resize();
                   textureReady = true;
                   stage.dataset.portraitState = "ready";
                   draw(0);
@@ -501,10 +501,11 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               };
 
               const updatePointer = (event: PointerEvent) => {
-                const bounds = canvas.getBoundingClientRect();
-                if (bounds.width === 0 || bounds.height === 0) return;
-                targetPointer.x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
-                targetPointer.y = 1 - ((event.clientY - bounds.top) / bounds.height) * 2;
+                const width = canvas.clientWidth;
+                const height = canvas.clientHeight;
+                if (width === 0 || height === 0) return;
+                targetPointer.x = (event.offsetX / width) * 2 - 1;
+                targetPointer.y = 1 - (event.offsetY / height) * 2;
               };
 
               canvas.addEventListener(
@@ -574,6 +575,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
         let pointerFrame = 0;
         let pointerX = 72;
         let pointerY = 42;
+        let cachedBounds: DOMRect | null = null;
 
         const renderHeroPointer = () => {
           hero.style.setProperty("--pointer-x", `${pointerX}%`);
@@ -583,10 +585,23 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
           pointerFrame = 0;
         };
 
+        const clearCachedBounds = () => {
+          cachedBounds = null;
+        };
+
+        hero.addEventListener(
+          "pointerenter",
+          () => {
+            cachedBounds = hero.getBoundingClientRect();
+          },
+          { passive: true },
+        );
+
         hero.addEventListener(
           "pointermove",
           (event) => {
-            const bounds = hero.getBoundingClientRect();
+            const bounds = cachedBounds ?? hero.getBoundingClientRect();
+            cachedBounds = bounds;
             if (bounds.width === 0 || bounds.height === 0) return;
             pointerX = ((event.clientX - bounds.left) / bounds.width) * 100;
             pointerY = ((event.clientY - bounds.top) / bounds.height) * 100;
@@ -596,10 +611,14 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
         );
 
         hero.addEventListener("pointerleave", () => {
+          clearCachedBounds();
           pointerX = 72;
           pointerY = 42;
           if (!pointerFrame) pointerFrame = requestAnimationFrame(renderHeroPointer);
         });
+
+        window.addEventListener("scroll", clearCachedBounds, { passive: true });
+        new ResizeObserver(clearCachedBounds).observe(hero);
       }
     </script>
   </body>

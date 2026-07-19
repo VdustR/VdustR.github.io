@@ -533,7 +533,7 @@ h1 {
   transition: color 220ms var(--ease-out);
 }
 
-.focus-item span {
+.focus-item .focus-signal {
   color: oklch(74% 0.025 285);
   font-size: 0.72rem;
   font-weight: 680;
@@ -554,7 +554,7 @@ h1 {
     color: var(--paper);
   }
 
-  .focus-item:hover span {
+  .focus-item:hover .focus-signal {
     color: var(--blush);
   }
 }
@@ -880,16 +880,22 @@ h1 {
     grid-template-columns: minmax(100px, 0.5fr) minmax(0, 1.5fr);
   }
 
-  .focus-item span {
+  .focus-item .focus-signal {
     display: none;
   }
 
   .site-footer {
     grid-template-columns: 1fr auto;
+    align-content: center;
+    row-gap: 14px;
+    padding-block: 22px;
   }
 
   .site-footer nav {
-    display: none;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    gap: 12px 22px;
   }
 }
 

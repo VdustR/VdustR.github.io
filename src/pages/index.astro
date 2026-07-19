@@ -233,6 +233,9 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             in vec2 vUv;
             out vec4 outColor;
 
+            vec2 uvScale;
+            vec2 uvOffset;
+
             float hash(vec2 p) {
               p = fract(p * vec2(123.34, 345.45));
               p += dot(p, p + 34.345);
@@ -240,18 +243,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             }
 
             vec2 coverUv(vec2 uv) {
-              float screenAspect = uResolution.x / max(uResolution.y, 1.0);
-              float imageAspect = uImageSize.x / max(uImageSize.y, 1.0);
-
-              if (screenAspect > imageAspect) {
-                float visibleHeight = imageAspect / screenAspect;
-                uv.y = 0.56 + (uv.y - 0.5) * visibleHeight;
-              } else {
-                float visibleWidth = screenAspect / imageAspect;
-                uv.x = 0.5 + (uv.x - 0.5) * visibleWidth;
-              }
-
-              return clamp(uv, 0.001, 0.999);
+              return clamp(uv * uvScale + uvOffset, 0.001, 0.999);
             }
 
             vec3 imageAt(vec2 uv) {
@@ -259,6 +251,20 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             }
 
             void main() {
+              float aspect = uResolution.x / max(uResolution.y, 1.0);
+              float imageAspect = uImageSize.x / max(uImageSize.y, 1.0);
+
+              if (aspect > imageAspect) {
+                float visibleHeight = imageAspect / aspect;
+                uvScale = vec2(1.0, visibleHeight);
+                uvOffset = vec2(0.0, 0.56 - 0.5 * visibleHeight);
+              } else {
+                float visibleWidth = aspect / imageAspect;
+                uvScale = vec2(visibleWidth, 1.0);
+                uvOffset = vec2(0.5 - 0.5 * visibleWidth, 0.0);
+              }
+
+              vec2 aspectScale = vec2(aspect, 1.0);
               float time = uTime;
               vec2 centered = vUv * 2.0 - 1.0;
               float radiusSquared = dot(centered, centered);
@@ -269,7 +275,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               float glassEdge = smoothstep(-0.018, 0.035, edge);
 
               vec2 pointerUv = uPointer * 0.5 + 0.5;
-              vec2 pointerDelta = (vUv - pointerUv) * vec2(uResolution.x / uResolution.y, 1.0);
+              vec2 pointerDelta = (vUv - pointerUv) * aspectScale;
               float pointerDistance = length(pointerDelta);
               float interactionField = exp(-pointerDistance * 4.6) * uInteraction;
               float pulseField = exp(-pointerDistance * 3.2) * uPulse;
@@ -345,7 +351,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               float pulseRing = exp(-abs(pointerDistance - pulseRadius) * 36.0) * uPulse;
               color += vec3(1.0, 0.24, 0.12) * pulseRing * 0.2;
 
-              vec2 reflectionDelta = (vUv - vec2(0.7, 0.16)) * vec2(uResolution.x / uResolution.y, 1.0);
+              vec2 reflectionDelta = (vUv - vec2(0.7, 0.16)) * aspectScale;
               float glassReflection = exp(-length(reflectionDelta) * 5.2);
               color += vec3(1.0, 0.72, 0.58) * glassReflection * 0.085;
 
@@ -371,6 +377,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             gl.compileShader(shader);
 
             if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+              console.error("Shader compilation failed:", gl.getShaderInfoLog(shader));
               gl.deleteShader(shader);
               return null;
             }
@@ -399,6 +406,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             gl.deleteShader(fragmentShader);
 
             if (!linked) {
+              console.error("Program linking failed:", gl.getProgramInfoLog(program));
               gl.deleteProgram(program);
               setFallback();
             } else {

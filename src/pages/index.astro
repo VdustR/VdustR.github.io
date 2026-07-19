@@ -421,7 +421,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               let interaction = 0;
               let targetInteraction = 0;
               let pulse = 0;
-              let previousMilliseconds = 0;
+              let previousMilliseconds: number | null = null;
 
               gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
               gl.bufferData(
@@ -447,9 +447,10 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 
               const draw = (milliseconds: number) => {
                 if (!textureReady) return;
-                const deltaSeconds = previousMilliseconds
-                  ? Math.min((milliseconds - previousMilliseconds) / 1000, 0.05)
-                  : 0;
+                const deltaSeconds =
+                  previousMilliseconds !== null
+                    ? Math.min((milliseconds - previousMilliseconds) / 1000, 0.05)
+                    : 0;
                 previousMilliseconds = milliseconds;
                 pointer.x += (targetPointer.x - pointer.x) * 0.055;
                 pointer.y += (targetPointer.y - pointer.y) * 0.055;
@@ -551,14 +552,14 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               visibilityObserver.observe(stage);
               new ResizeObserver(() => {
                 resize();
-                if (!isVisible || reducedMotion.matches) draw(previousMilliseconds);
+                if (!isVisible || reducedMotion.matches) draw(previousMilliseconds ?? 0);
               }).observe(stage);
               reducedMotion.addEventListener("change", () => {
                 cancelAnimationFrame(animationFrame);
                 interaction = 0;
                 targetInteraction = 0;
                 pulse = 0;
-                previousMilliseconds = 0;
+                previousMilliseconds = null;
                 draw(0);
               });
 

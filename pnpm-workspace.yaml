@@ -1,3 +1,6 @@
 allowBuilds:
   esbuild: true
   sharp: true
+
+overrides:
+  "yaml-language-server>yaml": 2.9.0

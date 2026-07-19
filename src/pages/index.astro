@@ -383,13 +383,23 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
           const program = gl.createProgram();
 
           if (!vertexShader || !fragmentShader || !program) {
+            if (vertexShader) gl.deleteShader(vertexShader);
+            if (fragmentShader) gl.deleteShader(fragmentShader);
+            if (program) gl.deleteProgram(program);
             setFallback();
           } else {
             gl.attachShader(program, vertexShader);
             gl.attachShader(program, fragmentShader);
             gl.linkProgram(program);
 
-            if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+            const linked = gl.getProgramParameter(program, gl.LINK_STATUS);
+            gl.detachShader(program, vertexShader);
+            gl.detachShader(program, fragmentShader);
+            gl.deleteShader(vertexShader);
+            gl.deleteShader(fragmentShader);
+
+            if (!linked) {
+              gl.deleteProgram(program);
               setFallback();
             } else {
               const buffer = gl.createBuffer();
@@ -492,6 +502,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 
               const updatePointer = (event: PointerEvent) => {
                 const bounds = canvas.getBoundingClientRect();
+                if (bounds.width === 0 || bounds.height === 0) return;
                 targetPointer.x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
                 targetPointer.y = 1 - ((event.clientY - bounds.top) / bounds.height) * 2;
               };
@@ -576,6 +587,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
           "pointermove",
           (event) => {
             const bounds = hero.getBoundingClientRect();
+            if (bounds.width === 0 || bounds.height === 0) return;
             pointerX = ((event.clientX - bounds.left) / bounds.width) * 100;
             pointerY = ((event.clientY - bounds.top) / bounds.height) * 100;
             if (!pointerFrame) pointerFrame = requestAnimationFrame(renderHeroPointer);

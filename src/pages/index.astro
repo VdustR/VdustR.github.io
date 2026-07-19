@@ -521,7 +521,9 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                 "pointermove",
                 (event) => {
                   updatePointer(event);
-                  if (event.pointerType === "mouse") targetInteraction = 1;
+                  if (event.pointerType === "mouse" || event.buttons > 0) {
+                    targetInteraction = 1;
+                  }
                 },
                 { passive: true },
               );
@@ -531,12 +533,15 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                   if (reducedMotion.matches) return;
                   updatePointer(event);
                   pulse = 1;
-                  if (event.pointerType === "mouse") targetInteraction = 1;
+                  targetInteraction = 1;
                 },
                 { passive: true },
               );
-              canvas.addEventListener("pointerleave", (event) => {
-                if (event.pointerType === "mouse") targetInteraction = 0;
+              canvas.addEventListener("pointerup", () => {
+                targetInteraction = 0;
+              });
+              canvas.addEventListener("pointerleave", () => {
+                targetInteraction = 0;
                 targetPointer.x = 0.22;
                 targetPointer.y = -0.18;
               });

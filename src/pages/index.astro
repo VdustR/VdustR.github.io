@@ -657,6 +657,15 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                   }
                 };
 
+                document.addEventListener("astro:before-swap", setFallback, {
+                  once: true,
+                  signal: eventController.signal,
+                });
+                window.addEventListener("pagehide", setFallback, {
+                  once: true,
+                  signal: eventController.signal,
+                });
+
                 void uploadPortrait();
               }
             }

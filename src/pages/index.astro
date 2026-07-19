@@ -427,6 +427,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                 let targetInteraction = 0;
                 let pulse = 0;
                 let previousMilliseconds: number | null = null;
+                let canvasBounds: DOMRect | null = null;
 
                 gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
                 gl.bufferData(
@@ -521,13 +522,19 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                   }
                 };
 
-                const updatePointer = (event: PointerEvent) => {
-                  const width = canvas.clientWidth;
-                  const height = canvas.clientHeight;
-                  if (width === 0 || height === 0) return;
-                  targetPointer.x = (event.offsetX / width) * 2 - 1;
-                  targetPointer.y = 1 - (event.offsetY / height) * 2;
+                const measureCanvas = () => {
+                  canvasBounds = canvas.getBoundingClientRect();
+                  return canvasBounds;
                 };
+
+                const updatePointer = (event: PointerEvent) => {
+                  const bounds = canvasBounds ?? measureCanvas();
+                  if (bounds.width === 0 || bounds.height === 0) return;
+                  targetPointer.x = ((event.clientX - bounds.left) / bounds.width) * 2 - 1;
+                  targetPointer.y = 1 - ((event.clientY - bounds.top) / bounds.height) * 2;
+                };
+
+                canvas.addEventListener("pointerenter", measureCanvas, { passive: true });
 
                 canvas.addEventListener(
                   "pointermove",
@@ -543,6 +550,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                   "pointerdown",
                   (event) => {
                     if (reducedMotion.matches) return;
+                    measureCanvas();
                     updatePointer(event);
                     pulse = 1;
                     targetInteraction = 1;
@@ -554,12 +562,15 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                 });
                 canvas.addEventListener("pointerleave", () => {
                   targetInteraction = 0;
+                  canvasBounds = null;
                   targetPointer.x = 0.22;
                   targetPointer.y = -0.18;
                 });
                 canvas.addEventListener("pointercancel", () => {
                   targetInteraction = 0;
+                  canvasBounds = null;
                 });
+                window.addEventListener("scroll", () => (canvasBounds = null), { passive: true });
 
                 canvas.addEventListener("webglcontextlost", (event) => {
                   event.preventDefault();
@@ -576,6 +587,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 
                 visibilityObserver.observe(stage);
                 new ResizeObserver(() => {
+                  canvasBounds = null;
                   resize();
                   if (!isVisible || reducedMotion.matches) draw(previousMilliseconds ?? 0);
                 }).observe(stage);

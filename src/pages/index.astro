@@ -83,7 +83,8 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 
         <div class="hero-copy">
           <p class="hero-role">Developer, interface maker, systems thinker.</p>
-          <h1 id="hero-title" aria-label={profile.headline}>
+          <h1 id="hero-title">
+            <span class="sr-only">{profile.headline}</span>
             {
               headlineLines.map((line) => (
                 <span class="headline-mask" aria-hidden="true">
@@ -202,7 +203,12 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
           powerPreference: "low-power",
         });
 
+        let cleanupPortrait: (() => void) | undefined;
+
         const setFallback = () => {
+          const cleanup = cleanupPortrait;
+          cleanupPortrait = undefined;
+          cleanup?.();
           stage.dataset.portraitState = "fallback";
         };
 
@@ -420,6 +426,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                 const pointer = { x: 0.22, y: -0.18 };
                 const targetPointer = { ...pointer };
                 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+                const eventController = new AbortController();
                 let animationFrame = 0;
                 let isVisible = true;
                 let textureReady = false;
@@ -534,7 +541,10 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                   targetPointer.y = 1 - ((event.clientY - bounds.top) / bounds.height) * 2;
                 };
 
-                canvas.addEventListener("pointerenter", measureCanvas, { passive: true });
+                canvas.addEventListener("pointerenter", measureCanvas, {
+                  passive: true,
+                  signal: eventController.signal,
+                });
 
                 canvas.addEventListener(
                   "pointermove",
@@ -544,7 +554,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                       targetInteraction = 1;
                     }
                   },
-                  { passive: true },
+                  { passive: true, signal: eventController.signal },
                 );
                 canvas.addEventListener(
                   "pointerdown",
@@ -555,29 +565,48 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                     pulse = 1;
                     targetInteraction = 1;
                   },
-                  { passive: true },
+                  { passive: true, signal: eventController.signal },
                 );
-                canvas.addEventListener("pointerup", () => {
-                  targetInteraction = 0;
+                canvas.addEventListener(
+                  "pointerup",
+                  () => {
+                    targetInteraction = 0;
+                  },
+                  { signal: eventController.signal },
+                );
+                canvas.addEventListener(
+                  "pointerleave",
+                  () => {
+                    targetInteraction = 0;
+                    canvasBounds = null;
+                    targetPointer.x = 0.22;
+                    targetPointer.y = -0.18;
+                  },
+                  { signal: eventController.signal },
+                );
+                canvas.addEventListener(
+                  "pointercancel",
+                  () => {
+                    targetInteraction = 0;
+                    canvasBounds = null;
+                  },
+                  { signal: eventController.signal },
+                );
+                window.addEventListener("scroll", () => (canvasBounds = null), {
+                  passive: true,
+                  signal: eventController.signal,
                 });
-                canvas.addEventListener("pointerleave", () => {
-                  targetInteraction = 0;
-                  canvasBounds = null;
-                  targetPointer.x = 0.22;
-                  targetPointer.y = -0.18;
-                });
-                canvas.addEventListener("pointercancel", () => {
-                  targetInteraction = 0;
-                  canvasBounds = null;
-                });
-                window.addEventListener("scroll", () => (canvasBounds = null), { passive: true });
 
-                canvas.addEventListener("webglcontextlost", (event) => {
-                  event.preventDefault();
-                  textureReady = false;
-                  cancelAnimationFrame(animationFrame);
-                  setFallback();
-                });
+                canvas.addEventListener(
+                  "webglcontextlost",
+                  (event) => {
+                    event.preventDefault();
+                    textureReady = false;
+                    cancelAnimationFrame(animationFrame);
+                    setFallback();
+                  },
+                  { signal: eventController.signal },
+                );
 
                 const visibilityObserver = new IntersectionObserver(([entry]) => {
                   isVisible = entry?.isIntersecting ?? false;
@@ -586,19 +615,38 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                 });
 
                 visibilityObserver.observe(stage);
-                new ResizeObserver(() => {
+                const resizeObserver = new ResizeObserver(() => {
                   canvasBounds = null;
                   resize();
                   if (!isVisible || reducedMotion.matches) draw(previousMilliseconds ?? 0);
-                }).observe(stage);
-                reducedMotion.addEventListener("change", () => {
-                  cancelAnimationFrame(animationFrame);
-                  interaction = 0;
-                  targetInteraction = 0;
-                  pulse = 0;
-                  previousMilliseconds = null;
-                  draw(0);
                 });
+                resizeObserver.observe(stage);
+                reducedMotion.addEventListener(
+                  "change",
+                  () => {
+                    cancelAnimationFrame(animationFrame);
+                    interaction = 0;
+                    targetInteraction = 0;
+                    pulse = 0;
+                    previousMilliseconds = null;
+                    draw(0);
+                  },
+                  { signal: eventController.signal },
+                );
+
+                cleanupPortrait = () => {
+                  textureReady = false;
+                  cancelAnimationFrame(animationFrame);
+                  visibilityObserver.disconnect();
+                  resizeObserver.disconnect();
+                  eventController.abort();
+
+                  if (!gl.isContextLost()) {
+                    gl.deleteTexture(texture);
+                    gl.deleteBuffer(buffer);
+                    gl.deleteProgram(program);
+                  }
+                };
 
                 void uploadPortrait();
               }

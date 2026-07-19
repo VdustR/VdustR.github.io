@@ -307,7 +307,6 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               bloom += imageAt(curvedUv - pixel);
               bloom *= 0.1667;
 
-              float bloomLuma = dot(bloom, vec3(0.2126, 0.7152, 0.0722));
               vec3 halation = max(bloom - 0.42, 0.0) * vec3(0.78, 0.22, 0.12) * 0.62;
               vec3 color = mix(base, bloom, 0.12) + halation;
 
@@ -668,11 +667,14 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
       const hero = document.querySelector(".hero");
       const reducedMotionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-      if (hero instanceof HTMLElement && !reducedMotionPreference.matches) {
+      if (hero instanceof HTMLElement) {
         let pointerFrame = 0;
         let pointerX = 72;
         let pointerY = 42;
         let cachedBounds: DOMRect | null = null;
+        let parallaxController: AbortController | null = null;
+        let heroResizeObserver: ResizeObserver | null = null;
+        const lifecycleController = new AbortController();
 
         const renderHeroPointer = () => {
           hero.style.setProperty("--pointer-x", `${pointerX}%`);
@@ -686,36 +688,87 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
           cachedBounds = null;
         };
 
-        hero.addEventListener(
-          "pointerenter",
-          () => {
-            cachedBounds = hero.getBoundingClientRect();
-          },
-          { passive: true },
-        );
-
-        hero.addEventListener(
-          "pointermove",
-          (event) => {
-            const bounds = cachedBounds ?? hero.getBoundingClientRect();
-            cachedBounds = bounds;
-            if (bounds.width === 0 || bounds.height === 0) return;
-            pointerX = ((event.clientX - bounds.left) / bounds.width) * 100;
-            pointerY = ((event.clientY - bounds.top) / bounds.height) * 100;
-            if (!pointerFrame) pointerFrame = requestAnimationFrame(renderHeroPointer);
-          },
-          { passive: true },
-        );
-
-        hero.addEventListener("pointerleave", () => {
+        const stopParallax = () => {
+          parallaxController?.abort();
+          parallaxController = null;
+          heroResizeObserver?.disconnect();
+          heroResizeObserver = null;
+          cancelAnimationFrame(pointerFrame);
+          pointerFrame = 0;
           clearCachedBounds();
           pointerX = 72;
           pointerY = 42;
-          if (!pointerFrame) pointerFrame = requestAnimationFrame(renderHeroPointer);
-        });
+          hero.style.removeProperty("--pointer-x");
+          hero.style.removeProperty("--pointer-y");
+          hero.style.removeProperty("--parallax-x");
+          hero.style.removeProperty("--parallax-y");
+        };
 
-        window.addEventListener("scroll", clearCachedBounds, { passive: true });
-        new ResizeObserver(clearCachedBounds).observe(hero);
+        const startParallax = () => {
+          if (parallaxController || reducedMotionPreference.matches) return;
+
+          parallaxController = new AbortController();
+          const { signal } = parallaxController;
+
+          hero.addEventListener(
+            "pointerenter",
+            () => {
+              cachedBounds = hero.getBoundingClientRect();
+            },
+            { passive: true, signal },
+          );
+
+          hero.addEventListener(
+            "pointermove",
+            (event) => {
+              const bounds = cachedBounds ?? hero.getBoundingClientRect();
+              cachedBounds = bounds;
+              if (bounds.width === 0 || bounds.height === 0) return;
+              pointerX = ((event.clientX - bounds.left) / bounds.width) * 100;
+              pointerY = ((event.clientY - bounds.top) / bounds.height) * 100;
+              if (!pointerFrame) pointerFrame = requestAnimationFrame(renderHeroPointer);
+            },
+            { passive: true, signal },
+          );
+
+          hero.addEventListener(
+            "pointerleave",
+            () => {
+              clearCachedBounds();
+              pointerX = 72;
+              pointerY = 42;
+              if (!pointerFrame) pointerFrame = requestAnimationFrame(renderHeroPointer);
+            },
+            { passive: true, signal },
+          );
+
+          window.addEventListener("scroll", clearCachedBounds, { passive: true, signal });
+          heroResizeObserver = new ResizeObserver(clearCachedBounds);
+          heroResizeObserver.observe(hero);
+        };
+
+        const syncParallax = () => {
+          if (reducedMotionPreference.matches) stopParallax();
+          else startParallax();
+        };
+
+        const disposeParallax = () => {
+          stopParallax();
+          lifecycleController.abort();
+        };
+
+        reducedMotionPreference.addEventListener("change", syncParallax, {
+          signal: lifecycleController.signal,
+        });
+        window.addEventListener("pagehide", disposeParallax, {
+          once: true,
+          signal: lifecycleController.signal,
+        });
+        document.addEventListener("astro:before-swap", disposeParallax, {
+          once: true,
+          signal: lifecycleController.signal,
+        });
+        syncParallax();
       }
     </script>
   </body>

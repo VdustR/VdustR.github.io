@@ -224,7 +224,9 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 
             uniform sampler2D uImage;
             uniform vec2 uResolution;
-            uniform vec2 uImageSize;
+            uniform vec2 uUvScale;
+            uniform vec2 uUvOffset;
+            uniform vec2 uAspectScale;
             uniform vec2 uPointer;
             uniform float uInteraction;
             uniform float uPulse;
@@ -233,9 +235,6 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             in vec2 vUv;
             out vec4 outColor;
 
-            vec2 uvScale;
-            vec2 uvOffset;
-
             float hash(vec2 p) {
               p = fract(p * vec2(123.34, 345.45));
               p += dot(p, p + 34.345);
@@ -243,7 +242,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             }
 
             vec2 coverUv(vec2 uv) {
-              return clamp(uv * uvScale + uvOffset, 0.001, 0.999);
+              return clamp(uv * uUvScale + uUvOffset, 0.001, 0.999);
             }
 
             vec3 imageAt(vec2 uv) {
@@ -251,20 +250,6 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             }
 
             void main() {
-              float aspect = uResolution.x / max(uResolution.y, 1.0);
-              float imageAspect = uImageSize.x / max(uImageSize.y, 1.0);
-
-              if (aspect > imageAspect) {
-                float visibleHeight = imageAspect / aspect;
-                uvScale = vec2(1.0, visibleHeight);
-                uvOffset = vec2(0.0, 0.56 - 0.5 * visibleHeight);
-              } else {
-                float visibleWidth = aspect / imageAspect;
-                uvScale = vec2(visibleWidth, 1.0);
-                uvOffset = vec2(0.5 - 0.5 * visibleWidth, 0.0);
-              }
-
-              vec2 aspectScale = vec2(aspect, 1.0);
               float time = uTime;
               vec2 centered = vUv * 2.0 - 1.0;
               float radiusSquared = dot(centered, centered);
@@ -275,7 +260,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               float glassEdge = smoothstep(-0.018, 0.035, edge);
 
               vec2 pointerUv = uPointer * 0.5 + 0.5;
-              vec2 pointerDelta = (vUv - pointerUv) * aspectScale;
+              vec2 pointerDelta = (vUv - pointerUv) * uAspectScale;
               float pointerDistance = length(pointerDelta);
               float interactionField = exp(-pointerDistance * 4.6) * uInteraction;
               float pulseField = exp(-pointerDistance * 3.2) * uPulse;
@@ -351,7 +336,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               float pulseRing = exp(-abs(pointerDistance - pulseRadius) * 36.0) * uPulse;
               color += vec3(1.0, 0.24, 0.12) * pulseRing * 0.2;
 
-              vec2 reflectionDelta = (vUv - vec2(0.7, 0.16)) * aspectScale;
+              vec2 reflectionDelta = (vUv - vec2(0.7, 0.16)) * uAspectScale;
               float glassReflection = exp(-length(reflectionDelta) * 5.2);
               color += vec3(1.0, 0.72, 0.58) * glassReflection * 0.085;
 
@@ -412,171 +397,199 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             } else {
               const buffer = gl.createBuffer();
               const texture = gl.createTexture();
-              const position = gl.getAttribLocation(program, "aPosition");
-              const imageUniform = gl.getUniformLocation(program, "uImage");
-              const resolution = gl.getUniformLocation(program, "uResolution");
-              const imageSize = gl.getUniformLocation(program, "uImageSize");
-              const pointerUniform = gl.getUniformLocation(program, "uPointer");
-              const interactionUniform = gl.getUniformLocation(program, "uInteraction");
-              const pulseUniform = gl.getUniformLocation(program, "uPulse");
-              const timeUniform = gl.getUniformLocation(program, "uTime");
-              const pointer = { x: 0.22, y: -0.18 };
-              const targetPointer = { ...pointer };
-              const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-              let animationFrame = 0;
-              let isVisible = true;
-              let textureReady = false;
-              let interaction = 0;
-              let targetInteraction = 0;
-              let pulse = 0;
-              let previousMilliseconds: number | null = null;
 
-              gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-              gl.bufferData(
-                gl.ARRAY_BUFFER,
-                new Float32Array([-1, -1, 3, -1, -1, 3]),
-                gl.STATIC_DRAW,
-              );
-              gl.useProgram(program);
-              gl.enableVertexAttribArray(position);
-              gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
-
-              const resize = () => {
-                const dpr = Math.min(window.devicePixelRatio, 1.6);
-                const width = Math.max(1, Math.round(canvas.clientWidth * dpr));
-                const height = Math.max(1, Math.round(canvas.clientHeight * dpr));
-
-                if (canvas.width !== width || canvas.height !== height) {
-                  canvas.width = width;
-                  canvas.height = height;
-                  gl.viewport(0, 0, width, height);
-                }
-              };
-
-              const draw = (milliseconds: number) => {
-                if (!textureReady) return;
-                const deltaSeconds =
-                  previousMilliseconds !== null
-                    ? Math.min((milliseconds - previousMilliseconds) / 1000, 0.05)
-                    : 0;
-                previousMilliseconds = milliseconds;
-                pointer.x += (targetPointer.x - pointer.x) * 0.055;
-                pointer.y += (targetPointer.y - pointer.y) * 0.055;
-                interaction +=
-                  (targetInteraction - interaction) * (1 - Math.exp(-deltaSeconds * 11));
-                pulse = Math.max(0, pulse - deltaSeconds * 1.8);
-
-                gl.uniform2f(resolution, canvas.width, canvas.height);
-                gl.uniform2f(pointerUniform, pointer.x, pointer.y);
-                gl.uniform1f(interactionUniform, interaction);
-                gl.uniform1f(pulseUniform, pulse);
-                gl.uniform1f(timeUniform, (milliseconds / 1000) % 3600);
-                gl.drawArrays(gl.TRIANGLES, 0, 3);
-
-                if (isVisible && !reducedMotion.matches) {
-                  animationFrame = requestAnimationFrame(draw);
-                }
-              };
-
-              const uploadPortrait = async () => {
-                try {
-                  if (!portrait.complete || portrait.naturalWidth === 0) {
-                    await portrait.decode();
-                  }
-
-                  if (!texture) {
-                    setFallback();
-                    return;
-                  }
-
-                  gl.activeTexture(gl.TEXTURE0);
-                  gl.bindTexture(gl.TEXTURE_2D, texture);
-                  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-                  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-                  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-                  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
-                  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-                  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, portrait);
-                  gl.uniform1i(imageUniform, 0);
-                  gl.uniform2f(imageSize, portrait.naturalWidth, portrait.naturalHeight);
-
-                  resize();
-                  textureReady = true;
-                  stage.dataset.portraitState = "ready";
-                  draw(0);
-                } catch {
-                  setFallback();
-                }
-              };
-
-              const updatePointer = (event: PointerEvent) => {
-                const width = canvas.clientWidth;
-                const height = canvas.clientHeight;
-                if (width === 0 || height === 0) return;
-                targetPointer.x = (event.offsetX / width) * 2 - 1;
-                targetPointer.y = 1 - (event.offsetY / height) * 2;
-              };
-
-              canvas.addEventListener(
-                "pointermove",
-                (event) => {
-                  updatePointer(event);
-                  if (event.pointerType === "mouse" || event.buttons > 0) {
-                    targetInteraction = 1;
-                  }
-                },
-                { passive: true },
-              );
-              canvas.addEventListener(
-                "pointerdown",
-                (event) => {
-                  if (reducedMotion.matches) return;
-                  updatePointer(event);
-                  pulse = 1;
-                  targetInteraction = 1;
-                },
-                { passive: true },
-              );
-              canvas.addEventListener("pointerup", () => {
-                targetInteraction = 0;
-              });
-              canvas.addEventListener("pointerleave", () => {
-                targetInteraction = 0;
-                targetPointer.x = 0.22;
-                targetPointer.y = -0.18;
-              });
-              canvas.addEventListener("pointercancel", () => {
-                targetInteraction = 0;
-              });
-
-              canvas.addEventListener("webglcontextlost", (event) => {
-                event.preventDefault();
-                textureReady = false;
-                cancelAnimationFrame(animationFrame);
+              if (!buffer || !texture) {
+                if (buffer) gl.deleteBuffer(buffer);
+                if (texture) gl.deleteTexture(texture);
+                gl.deleteProgram(program);
                 setFallback();
-              });
+              } else {
+                const position = gl.getAttribLocation(program, "aPosition");
+                const imageUniform = gl.getUniformLocation(program, "uImage");
+                const resolution = gl.getUniformLocation(program, "uResolution");
+                const uvScaleUniform = gl.getUniformLocation(program, "uUvScale");
+                const uvOffsetUniform = gl.getUniformLocation(program, "uUvOffset");
+                const aspectScaleUniform = gl.getUniformLocation(program, "uAspectScale");
+                const pointerUniform = gl.getUniformLocation(program, "uPointer");
+                const interactionUniform = gl.getUniformLocation(program, "uInteraction");
+                const pulseUniform = gl.getUniformLocation(program, "uPulse");
+                const timeUniform = gl.getUniformLocation(program, "uTime");
+                const uvScale = { x: 1, y: 1 };
+                const uvOffset = { x: 0, y: 0 };
+                const aspectScale = { x: 1, y: 1 };
+                const pointer = { x: 0.22, y: -0.18 };
+                const targetPointer = { ...pointer };
+                const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+                let animationFrame = 0;
+                let isVisible = true;
+                let textureReady = false;
+                let interaction = 0;
+                let targetInteraction = 0;
+                let pulse = 0;
+                let previousMilliseconds: number | null = null;
 
-              const visibilityObserver = new IntersectionObserver(([entry]) => {
-                isVisible = entry?.isIntersecting ?? false;
-                cancelAnimationFrame(animationFrame);
-                if (isVisible && textureReady) animationFrame = requestAnimationFrame(draw);
-              });
+                gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+                gl.bufferData(
+                  gl.ARRAY_BUFFER,
+                  new Float32Array([-1, -1, 3, -1, -1, 3]),
+                  gl.STATIC_DRAW,
+                );
+                gl.useProgram(program);
+                gl.enableVertexAttribArray(position);
+                gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);
 
-              visibilityObserver.observe(stage);
-              new ResizeObserver(() => {
-                resize();
-                if (!isVisible || reducedMotion.matches) draw(previousMilliseconds ?? 0);
-              }).observe(stage);
-              reducedMotion.addEventListener("change", () => {
-                cancelAnimationFrame(animationFrame);
-                interaction = 0;
-                targetInteraction = 0;
-                pulse = 0;
-                previousMilliseconds = null;
-                draw(0);
-              });
+                const resize = () => {
+                  const dpr = Math.min(window.devicePixelRatio, 1.6);
+                  const width = Math.max(1, Math.round(canvas.clientWidth * dpr));
+                  const height = Math.max(1, Math.round(canvas.clientHeight * dpr));
 
-              void uploadPortrait();
+                  if (canvas.width !== width || canvas.height !== height) {
+                    canvas.width = width;
+                    canvas.height = height;
+                    gl.viewport(0, 0, width, height);
+                  }
+
+                  const aspect = width / height;
+                  const imageAspect = portrait.naturalWidth / Math.max(portrait.naturalHeight, 1);
+                  aspectScale.x = aspect;
+
+                  if (aspect > imageAspect) {
+                    const visibleHeight = imageAspect / aspect;
+                    uvScale.x = 1;
+                    uvScale.y = visibleHeight;
+                    uvOffset.x = 0;
+                    uvOffset.y = 0.56 - 0.5 * visibleHeight;
+                  } else {
+                    const visibleWidth = aspect / imageAspect;
+                    uvScale.x = visibleWidth;
+                    uvScale.y = 1;
+                    uvOffset.x = 0.5 - 0.5 * visibleWidth;
+                    uvOffset.y = 0;
+                  }
+                };
+
+                const draw = (milliseconds: number) => {
+                  if (!textureReady) return;
+                  const deltaSeconds =
+                    previousMilliseconds !== null
+                      ? Math.min((milliseconds - previousMilliseconds) / 1000, 0.05)
+                      : 0;
+                  previousMilliseconds = milliseconds;
+                  pointer.x += (targetPointer.x - pointer.x) * 0.055;
+                  pointer.y += (targetPointer.y - pointer.y) * 0.055;
+                  interaction +=
+                    (targetInteraction - interaction) * (1 - Math.exp(-deltaSeconds * 11));
+                  pulse = Math.max(0, pulse - deltaSeconds * 1.8);
+
+                  gl.uniform2f(resolution, canvas.width, canvas.height);
+                  gl.uniform2f(uvScaleUniform, uvScale.x, uvScale.y);
+                  gl.uniform2f(uvOffsetUniform, uvOffset.x, uvOffset.y);
+                  gl.uniform2f(aspectScaleUniform, aspectScale.x, aspectScale.y);
+                  gl.uniform2f(pointerUniform, pointer.x, pointer.y);
+                  gl.uniform1f(interactionUniform, interaction);
+                  gl.uniform1f(pulseUniform, pulse);
+                  gl.uniform1f(timeUniform, (milliseconds / 1000) % 3600);
+                  gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+                  if (isVisible && !reducedMotion.matches) {
+                    animationFrame = requestAnimationFrame(draw);
+                  }
+                };
+
+                const uploadPortrait = async () => {
+                  try {
+                    if (!portrait.complete || portrait.naturalWidth === 0) {
+                      await portrait.decode();
+                    }
+
+                    gl.activeTexture(gl.TEXTURE0);
+                    gl.bindTexture(gl.TEXTURE_2D, texture);
+                    gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+                    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+                    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, portrait);
+                    gl.uniform1i(imageUniform, 0);
+
+                    resize();
+                    textureReady = true;
+                    stage.dataset.portraitState = "ready";
+                    draw(0);
+                  } catch {
+                    setFallback();
+                  }
+                };
+
+                const updatePointer = (event: PointerEvent) => {
+                  const width = canvas.clientWidth;
+                  const height = canvas.clientHeight;
+                  if (width === 0 || height === 0) return;
+                  targetPointer.x = (event.offsetX / width) * 2 - 1;
+                  targetPointer.y = 1 - (event.offsetY / height) * 2;
+                };
+
+                canvas.addEventListener(
+                  "pointermove",
+                  (event) => {
+                    updatePointer(event);
+                    if (event.pointerType === "mouse" || event.buttons > 0) {
+                      targetInteraction = 1;
+                    }
+                  },
+                  { passive: true },
+                );
+                canvas.addEventListener(
+                  "pointerdown",
+                  (event) => {
+                    if (reducedMotion.matches) return;
+                    updatePointer(event);
+                    pulse = 1;
+                    targetInteraction = 1;
+                  },
+                  { passive: true },
+                );
+                canvas.addEventListener("pointerup", () => {
+                  targetInteraction = 0;
+                });
+                canvas.addEventListener("pointerleave", () => {
+                  targetInteraction = 0;
+                  targetPointer.x = 0.22;
+                  targetPointer.y = -0.18;
+                });
+                canvas.addEventListener("pointercancel", () => {
+                  targetInteraction = 0;
+                });
+
+                canvas.addEventListener("webglcontextlost", (event) => {
+                  event.preventDefault();
+                  textureReady = false;
+                  cancelAnimationFrame(animationFrame);
+                  setFallback();
+                });
+
+                const visibilityObserver = new IntersectionObserver(([entry]) => {
+                  isVisible = entry?.isIntersecting ?? false;
+                  cancelAnimationFrame(animationFrame);
+                  if (isVisible && textureReady) animationFrame = requestAnimationFrame(draw);
+                });
+
+                visibilityObserver.observe(stage);
+                new ResizeObserver(() => {
+                  resize();
+                  if (!isVisible || reducedMotion.matches) draw(previousMilliseconds ?? 0);
+                }).observe(stage);
+                reducedMotion.addEventListener("change", () => {
+                  cancelAnimationFrame(animationFrame);
+                  interaction = 0;
+                  targetInteraction = 0;
+                  pulse = 0;
+                  previousMilliseconds = null;
+                  draw(0);
+                });
+
+                void uploadPortrait();
+              }
             }
           }
         }

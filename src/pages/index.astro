@@ -452,7 +452,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
                 gl.uniform2f(pointerUniform, pointer.x, pointer.y);
                 gl.uniform1f(interactionUniform, interaction);
                 gl.uniform1f(pulseUniform, pulse);
-                gl.uniform1f(timeUniform, milliseconds / 1000);
+                gl.uniform1f(timeUniform, (milliseconds / 1000) % 3600);
                 gl.drawArrays(gl.TRIANGLES, 0, 3);
 
                 if (isVisible && !reducedMotion.matches) {
@@ -537,7 +537,10 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
               });
 
               visibilityObserver.observe(stage);
-              new ResizeObserver(resize).observe(stage);
+              new ResizeObserver(() => {
+                resize();
+                if (!isVisible || reducedMotion.matches) draw(previousMilliseconds);
+              }).observe(stage);
               reducedMotion.addEventListener("change", () => {
                 cancelAnimationFrame(animationFrame);
                 interaction = 0;

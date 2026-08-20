@@ -1,6 +1,6 @@
 # VdustR.github.io
 
-Minimal profile site for VdustR, built with Astro and deployed at `https://vdustr.dev`.
+Minimal profile site for VdustR, built with Astro and deployed at `https://vdustr.github.io`.
 
 ## Commands
 

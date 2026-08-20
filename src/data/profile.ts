@@ -1,7 +1,7 @@
 export const profile = {
   name: "ViPro",
   handle: "VdustR",
-  site: "https://vdustr.dev",
+  site: "https://vdustr.github.io",
   avatar: "https://avatars.githubusercontent.com/u/29639463?v=4",
   headline: "Make complex work feel obvious.",
   intro:

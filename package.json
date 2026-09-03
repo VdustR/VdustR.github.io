@@ -16,10 +16,10 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "7.1.1"
+    "astro": "7.2.10"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.9",
+    "@astrojs/check": "0.9.10",
     "oxfmt": "0.50.0",
     "oxlint": "1.65.0",
     "prettier": "3.8.3",

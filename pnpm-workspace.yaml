@@ -3,4 +3,5 @@ allowBuilds:
   sharp: true
 
 overrides:
+  astro>vite: 8.2.4
   oxfmt>tinypool: 2.1.2

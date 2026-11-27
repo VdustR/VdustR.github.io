@@ -7,6 +7,7 @@ const pageDescription = profile.intro;
 const ogImage = new URL("/og.png", profile.site).toString();
 const githubLink = profile.links.find((link) => link.label === "GitHub") ?? profile.links[0];
 const xLink = profile.links.find((link) => link.label === "X") ?? profile.links[0];
+const linkGroups = ["Work & play", "Words & video", "Connect"] as const;
 const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 ---
 
@@ -67,6 +68,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 
       <nav class="header-nav" aria-label="Primary navigation">
         <a href="#focus">What I do</a>
+        <a href="#elsewhere">Elsewhere</a>
         <a href="#contact">Contact</a>
       </nav>
 
@@ -108,14 +110,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
             >
               Explore my work <span aria-hidden="true">↗</span>
             </a>
-            <a
-              class="action action-secondary"
-              href={xLink.href}
-              target="_blank"
-              rel="me noopener noreferrer"
-            >
-              Find me on X
-            </a>
+            <a class="action action-secondary" href="#elsewhere">Find me elsewhere</a>
           </div>
         </div>
 
@@ -163,6 +158,42 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
         </dl>
       </section>
 
+      <section class="elsewhere-section" id="elsewhere" aria-labelledby="elsewhere-title">
+        <h2 id="elsewhere-title">Find me elsewhere.</h2>
+        <div class="elsewhere-groups">
+          {
+            linkGroups.map((group) => (
+              <div class="elsewhere-group">
+                <h3>{group}</h3>
+                <ul>
+                  {profile.links
+                    .filter((link) => link.group === group)
+                    .map((link) => (
+                      <li>
+                        <a href={link.href} rel="me noopener noreferrer" target="_blank">
+                          <span class="elsewhere-link-copy">
+                            <strong>{link.label}</strong>
+                            <span>{link.detail}</span>
+                          </span>
+                          <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                            aria-hidden="true"
+                          >
+                            <path d="M5 19 19 5M5 5h14v14" />
+                          </svg>
+                        </a>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
+      </section>
+
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
         <p>Have a difficult idea?</p>
         <h2 id="contact-title">Bring me the tangled part.</h2>
@@ -174,15 +205,7 @@ const headlineLines = [["Make"], ["complex", "work"], ["feel", "obvious."]];
 
     <footer class="site-footer">
       <a class="footer-identity" href="/">{profile.name} <span>@{profile.handle}</span></a>
-      <nav aria-label="Social links">
-        {
-          profile.links.map((link) => (
-            <a href={link.href} rel="me noopener noreferrer" target="_blank">
-              {link.label}
-            </a>
-          ))
-        }
-      </nav>
+      <a class="footer-top" href="#top">Back to top</a>
       <p>© 2026</p>
     </footer>
 
